@@ -6,7 +6,7 @@
   <link href="http://www.liuyewei.com/atom.xml" rel="self"/>
   
   <link href="http://www.liuyewei.com/"/>
-  <updated>2020-08-11T16:32:01.721Z</updated>
+  <updated>2020-08-20T14:38:11.454Z</updated>
   <id>http://www.liuyewei.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>类的加载过程</title>
+    <link href="http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/"/>
+    <id>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</id>
+    <published>2020-08-20T14:25:30.000Z</published>
+    <updated>2020-08-20T14:38:11.454Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Java-类加载机制"><a href="#Java-类加载机制" class="headerlink" title="Java 类加载机制"></a>Java 类加载机制</h3><p>类从被加载到JVM中开始，到卸载为止，整个生命周期包括：<strong>加载、验证、准备、解析、初始化、使用和卸载七个阶段</strong>。<br>其中类加载过程包括加载、验证、准备、解析和初始化五个阶段。</p><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content1.png" class title="content1"><h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><ol><li>通过类加载器，加载.class文件到内存中。</li><li>将读取到.classs数据存储到运行时内存区的方法区。</li><li>然后将其转换为一个与目标类型对应的java.lang.Class对象实例。这个Class对象在日后就会作为方法区中该类的各种数据的访问入口。</li></ol><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>确保被加载的类（.class文件的字节流），是否按照java虚拟的规范。不会造成安全问题</p><ol><li>文件格式验证:<br>第一阶段要验证字节流是否符合 Class文件格式的规范, 井且能被当前版本的虚拟机处理。这一阶段可能包括下面这些验证点：</li></ol><ul><li>是否以魔数 0xCAFEBABE开头</li><li>主、次版本号是否在当前虚拟机处理范围之内。</li><li>常量池的常量中是否有不被支持的常量类型(检査常量tag 标志)。</li><li>指向常量的各种索引值中是否有指向不存在的常量或不符合装型的常量。</li><li>CONSTANT_Utf8_info型的常量中是否有不符合 UTF8编码的数据</li><li>Class 文件中各个部分及文件本身是否有被删除的或附加的其他信息 实际上第一阶段的验证点还远不止这些, 这是其中的一部分。只有通过了这个阶段的验证之后, 字节流才会进入内存的方法区中进行存储, 所以后面的三个验证阶段全部是基于方法区的存储结构进行的，不会再直接操作字节流。</li></ul><ol start="2"><li>元数据验证<br>第二阶段是对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求,这个阶段可能包括的验证点如下:</li></ol><ul><li>这个类是否有父类(除了java.lang.object之外,所有的类都应当有父类)</li><li>这个类的父类是否继承了不允许被继承的类(被finaI修饰的类)<br>如果这个类不是抽象类, 是否实現了其父类或接口之中要求实现的所有方法类中的字段、方法是否与父类产生了矛盾(例如覆盖了父类的final字段, 或者出現不符合规则的方法重载, 例如方法参数都一致, 但返回值类型却不同等) 第二阶段的验证点同样远不止这些，这一阶段的主要目的是对类的元数据信息进行语义检验, 保证不存在不符合 Java语言规范的元数据信息。</li></ul><ol start="3"><li>字节码验证<br>第三阶段是整个验证过程中最复杂的一个阶段, 主要目的是通过数据流和控制流的分析，确定语义是合法的。符号逻辑的。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析，保证被校验类的方法在运行时不会做出危害虚拟机安全的行为，例如：</li></ol><ul><li>保证任意时刻操作数栈的数据装型与指令代码序列都能配合工作, 例如不会出现类似这样的情况:在操作栈中放置了一个 int类型的数据, 使用时却按long类型来加载入本地变量表中。</li><li>保证跳转指令不会跳转到方法体以外的字节码指令上</li><li>保证方法体中的类型转换是有效的, 例如可以把一个子类对象赋值给父类数据装型，这是安全的,但是把父类对象意赋值给子类数据类型,甚至把对象赋值给与它毫无继承关系、 完全不相干的一个数据类型, 则是危险和不合法的。 即使一个方法体通过了字节码验证, 也不能说明其一定就是安全的。</li></ul><ol start="4"><li>符号引用验证<br>最后一个阶段的校验发生在虚拟机将符号引用转化为直接引用的时候, 这个转化动作将在连接的第三个阶段——解析阶段中发生。符号引用验证可以看做是对类自身以外(常量池中的各种符号引用) 的信息进行匹配性的校验, 通常需要校验以下内容:</li></ol><ul><li>符号引用中通过字将串描述的全限定名是否能找到对应的类</li><li>在指定类中是否存在符合方法的字段描述符以及简单名称所描述的方法和字段 。</li><li>符号引用中的类、字段和方法的访问性(private、 protected、 public、 default)是否可被当前     类访问</li><li>符号引用验证的目的是确保解析动作能正常执行, 如果无法通过符号引用验证, 将会抛出一个java.lang.IncompatibleClassChangError异常的子类, 如 java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError等。</li></ul><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>主要是为类变量（注意，不是实例变量）分配内存，并且赋予初值，此时的赋值是Java虚拟机根据不同变量类型的默认初始值：<br>如8种基本类型的初值，默认为0；引用类型的初值则为null；常量的初值即为代码中设置的值<br> 1、final static temp = 100，此时temp就是赋值 100。<br> 2、String temp = “123456”，此时temp值就是null。<br> 3、int temp = 100，此时temp值就是0。</p><h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>将类的二进制数据中的符号引用替换成直接引用（符号引用是用一组符号描述所引用的目标；直接引用是指向目标的指针）<br>可以认为是一些静态绑定的会被解析，动态绑定则只会在运行时进行解析；静态绑定包括一些final方法(不可以重写),static方法(只会属于当前类)，构造器(不会被重写)<br>在解析阶段，虚拟机会把所有的类名，方法名，字段名这些符号引用替换为具体的内存地址或偏移量，也就是直接引用。</p><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>初始化，则是为标记为常量值的字段赋值的过程。<br>换句话说，只对static修饰的变量或语句块进行初始化。<br>如果初始化一个类的时候，其父类尚未初始化，则优先初始化其父类。<br>如果同时包含多个静态变量和静态代码块，则按照自上而下的顺序依次执行。</p><h3 id="涉及问题"><a href="#涉及问题" class="headerlink" title="涉及问题"></a>涉及问题</h3><p>一个类的构造器，代码块，静态代码块，成员变量的的执行顺序。</p><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content2.png" class title="content2"><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content3.png" class title="content3"><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content4.png" class title="content4">                                                                                                                                                   ]]></content>
+    
+    
+    <summary type="html">类的加载过程</summary>
+    
+    
+    
+    <category term="Java" scheme="http://www.liuyewei.com/categories/Java/"/>
+    
+    
+    <category term="类" scheme="http://www.liuyewei.com/tags/%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>类的加载方式</title>
+    <link href="http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/"/>
+    <id>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-08-20T14:11:30.000Z</published>
+    <updated>2020-08-20T14:23:48.228Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol><li>隐式加载：new</li><li>显式加载：ClassLoader.loadClass和Class.forName</li></ol><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p><p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1"><h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p><p><strong>Class.forName:</strong></p><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2"><p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3"><p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4"><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5"><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6"><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>]]></content>
+    
+    
+    <summary type="html">类的加载方式</summary>
+    
+    
+    
+    <category term="Java" scheme="http://www.liuyewei.com/categories/Java/"/>
+    
+    
+    <category term="类" scheme="http://www.liuyewei.com/tags/%E7%B1%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>唯一索引和非唯一索引</title>
