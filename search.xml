@@ -125,44 +125,6 @@
       </tags>
   </entry>
   <entry>
-    <title>唯一索引和非唯一索引</title>
-    <url>/2020/08/12/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95/</url>
-    <content><![CDATA[<p>非唯一索引也叫普通索引</p>
-<p>如果在一个列上同时建唯一索引和普通索引的话，mysql 会自动选择唯一索引 唯一索引和普通索引使用的结构都是 B-tree，执行时间复杂度都是 O(log n)</p>
-<h3 id="普通索引（非唯一索引）"><a href="#普通索引（非唯一索引）" class="headerlink" title="普通索引（非唯一索引）"></a>普通索引（非唯一索引）</h3><p>普通索引（由关键字 KEY 或 INDEX 定义的索引）的唯一任务是加快对数据的访问速度。因此，应该只为那些最经常出现在查询条件（WHERE column =）或排序条件（ORDER BY column）中的数据列创建索引。只要有可能，就应该选择一个数据最整齐、最紧凑的数据列（如一个整数类型的数据列）来创建索引。</p>
-<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>普通索引允许被索引的数据列包含重复的值</p>
-<p>如果能确定某个数据列将只包含彼此各不相同的值，在为这个数据列创建索引的时候就应该用关键字 UNIQUE 把它定义为一个唯一索引。这么做的好处：一是简化了 MySQL 对这个索引的管理工作，这个索引也因此而变得更有效率（区分度：distinct * / count (*) 高）；二是 MySQL 会在有新记录插入数据表时，自动检查新记录的这个字段的值是否已经在某个记录的这个字段里出现过了；如果是，MySQL 将拒绝插入那条新记录。也就是说，唯一索引可以保证数据记录的唯一性。事实上，在许多场合，人们创建唯一索引的目的往往不是为了提高访问速度，而只是为了避免数据出现重复。</p>
-<h3 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h3><p>主键索引是唯一索引的特殊类型</p>
-<p>数据库表通常有一列或列组合，其值用来唯一标识表中的每一行。该列称为表的主键 在数据库关系图中为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的。当在查询中使用主键索引时，它还允许快速访问数据 </p>
-<p>它们的一些比较： </p>
-<ol>
-<li><p>对于主键 MySQL 会自动建立唯一索引；</p>
-</li>
-<li><p>主键不一定只包含一个字段，所以可以在主键的其中一个字段建唯一索引； </p>
-</li>
-<li><p>主键可作外键，唯一索引不可；</p>
-</li>
-<li><p>主键不可为空，唯一索引可； </p>
-</li>
-<li><p>主键也可是多个字段的组合； </p>
-</li>
-</ol>
-<p>主键与唯一索引不同的是： </p>
-<ol>
-<li><p>有not null属性； </p>
-</li>
-<li><p>每个表只能有一个。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>内外部类互访</title>
     <url>/2020/07/21/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB%E4%BA%92%E8%AE%BF/</url>
     <content><![CDATA[<h3 id="内部类访问外部类"><a href="#内部类访问外部类" class="headerlink" title="内部类访问外部类"></a>内部类访问外部类</h3><p>里面的可以自由访问外面的，规则和static一样。（访问非静态时必须先创建对象）具体如下：</p>
@@ -227,6 +189,144 @@
       </categories>
       <tags>
         <tag>内外部类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>唯一索引和非唯一索引</title>
+    <url>/2020/08/12/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<p>非唯一索引也叫普通索引</p>
+<p>如果在一个列上同时建唯一索引和普通索引的话，mysql 会自动选择唯一索引 唯一索引和普通索引使用的结构都是 B-tree，执行时间复杂度都是 O(log n)</p>
+<h3 id="普通索引（非唯一索引）"><a href="#普通索引（非唯一索引）" class="headerlink" title="普通索引（非唯一索引）"></a>普通索引（非唯一索引）</h3><p>普通索引（由关键字 KEY 或 INDEX 定义的索引）的唯一任务是加快对数据的访问速度。因此，应该只为那些最经常出现在查询条件（WHERE column =）或排序条件（ORDER BY column）中的数据列创建索引。只要有可能，就应该选择一个数据最整齐、最紧凑的数据列（如一个整数类型的数据列）来创建索引。</p>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>普通索引允许被索引的数据列包含重复的值</p>
+<p>如果能确定某个数据列将只包含彼此各不相同的值，在为这个数据列创建索引的时候就应该用关键字 UNIQUE 把它定义为一个唯一索引。这么做的好处：一是简化了 MySQL 对这个索引的管理工作，这个索引也因此而变得更有效率（区分度：distinct * / count (*) 高）；二是 MySQL 会在有新记录插入数据表时，自动检查新记录的这个字段的值是否已经在某个记录的这个字段里出现过了；如果是，MySQL 将拒绝插入那条新记录。也就是说，唯一索引可以保证数据记录的唯一性。事实上，在许多场合，人们创建唯一索引的目的往往不是为了提高访问速度，而只是为了避免数据出现重复。</p>
+<h3 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h3><p>主键索引是唯一索引的特殊类型</p>
+<p>数据库表通常有一列或列组合，其值用来唯一标识表中的每一行。该列称为表的主键 在数据库关系图中为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的。当在查询中使用主键索引时，它还允许快速访问数据 </p>
+<p>它们的一些比较： </p>
+<ol>
+<li><p>对于主键 MySQL 会自动建立唯一索引；</p>
+</li>
+<li><p>主键不一定只包含一个字段，所以可以在主键的其中一个字段建唯一索引； </p>
+</li>
+<li><p>主键可作外键，唯一索引不可；</p>
+</li>
+<li><p>主键不可为空，唯一索引可； </p>
+</li>
+<li><p>主键也可是多个字段的组合； </p>
+</li>
+</ol>
+<p>主键与唯一索引不同的是： </p>
+<ol>
+<li><p>有not null属性； </p>
+</li>
+<li><p>每个表只能有一个。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>消息队列</title>
+    <url>/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h3 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h3><p>可以把消息队列比作是一个存放消息的容器。消息队列是分布式系统中重要的组件，使用消息队列主要是为了通过异步处理提高系统性能和削峰、降低系统耦合性。目前使用较多的消息队列有ActiveMQ，RabbitMQ，Kafka，RocketMQ。</p>
+<p>另外，队列Queue是一种先进先出的数据结构，所以消费消息时也是按照顺序来消费的。比如生产者发送消息1,2,3…对于消费者就会按照1,2,3…的顺序来消费。但是偶尔也会出现消息被消费的顺序不对的情况，比如某个消息消费失败又或者一个queue多个consumer也会导致消息被消费的顺序不对，我们一定要保证消息被消费的顺序正确。</p>
+<p>除了上面说的消息消费顺序的问题，使用消息队列，还要考虑如何保证消息不被重复消费？如何保证消息的可靠性传输（如何处理消息丢失的问题）？……等等问题。所以说使用消息队列也不是十全十美的，使用它也会让系统可用性降低、复杂度提高，另外需要我们保障一致性等问题。</p>
+<h3 id="为什么要用消息队列"><a href="#为什么要用消息队列" class="headerlink" title="为什么要用消息队列"></a>为什么要用消息队列</h3><p>使用消息队列主要有两点好处：</p>
+<ol>
+<li>通过异步处理提高系统性能（削峰、减少响应所需时间）；</li>
+<li>降低系统耦合性。</li>
+</ol>
+<p><strong>（1）通过异步处理提高系统性能（削峰、减少响应所需时间)</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content1.png" class title="消息队列1">
+<p>如上图，<strong>在不使用消息队列服务器的时候，用户的请求数据直接写入数据库，在高并发的情况下数据库压力剧增，使得响应速度变慢。但是在使用消息队列之后，用户的请求发送给消息队列之后立即返回，再由消息队列的消费者进程从消息队列中获取数据，异步写入数据库。由于消息队列服务器处理速度快于数据库（消息队列也比数据库有更好的伸缩性），因此响应速度得到大幅改善</strong>。</p>
+<p>通过以上分析可以得出<strong>消息队列具有很好的削峰作用的功能——即通过异步处理，将短时间高并发产生的事务消息存储在消息队列中，从而削平高峰期的并发事务</strong>。举例：在电子商务一些秒杀、促销活动中，合理使用消息队列可以有效抵御促销活动刚开始大量订单涌入对系统的冲击。如下图所示：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content2.png" class title="content2">
+<p>因为<strong>用户请求数据写入消息队列之后就立即返回给用户了，但是请求数据在后续的业务校验、写数据库等操作中可能失败</strong>。因此使用消息队列进行异步处理之后，需要<strong>适当修改业务流程进行配合</strong>，比如<strong>用户在提交订单之后，订单数据写入消息队列，不能立即返回用户订单提交成功，需要在消息队列的订单消费者进程真正处理完该订单之后，甚至出库后，再通过电子邮件或短信通知用户订单成功</strong>，以免交易纠纷。这就类似我们平时手机订火车票和电影票。</p>
+<p><strong>（2）降低系统耦合性</strong><br>如果模块之间不存在直接调用，那么新增模块或者修改模块就对其他模块影响较小，这样系统的可扩展性无疑更好一些。<br>最常见的<strong>事件驱动架构</strong>类似生产者消费者模式，在大型网站中通常用利用消息队列实现事件驱动结构。如下图所示：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content3.png" class title="content3">
+<p><strong>消息队列使利用发布-订阅模式工作，消息发送者（生产者）发布消息，一个或多个消息接收者（消费者）订阅消息</strong>。从上图可以看到<strong>消息发送者（生产者）和消息接收者（消费者）之间没有直接耦合</strong>，消息发送者将消息发送至分布式消息队列即结束对消息的处理，消息接收者从分布式消息队列获取该消息后进行后续处理，并不需要知道该消息从何而来。<strong>对新增业务，只要对该类消息感兴趣，即可订阅该消息，对原有系统和业务没有任何影响，从而实现网站业务的可扩展性设计</strong>。<br>消息接收者对消息进行过滤、处理、包装后，构造成一个新的消息类型，将消息继续发送出去，等待其他消息接受者订阅该消息。因此基于事件（消息对象）驱动的业务架构可以是一系列流程。</p>
+<p><strong>另外为了避免消息队列服务器宕机造成消息丢失，会将成功发送到消息队列的消息存储在消息生产者服务器上，等消息真正被消费者服务器处理后才删除消息。在消息队列服务器宕机后，生产者服务器会选择分布式消息队列服务器集群中的其他服务器发布消息</strong>。</p>
+<p><strong>备注</strong>：不要认为消息队列只能利用发布-订阅模式工作，只不过在解耦这个特定业务环境下是使用发布-订阅模式的。<strong>除了发布-订阅模式，还有点对点订阅模式（一个消息只有一个消费者），我们比较常用的是发布-订阅模式</strong>。另外，这两者消息模型是JMS提供的，AMQP协议还提供了5种消息模型。</p>
+<h3 id="使用消息队列带来的一些问题"><a href="#使用消息队列带来的一些问题" class="headerlink" title="使用消息队列带来的一些问题"></a>使用消息队列带来的一些问题</h3><ul>
+<li>系统可用性降低：系统可用性在某种程度上降低，在加入MQ之前，不用考虑消息丢失或者说MQ挂掉等等的情况，但是，引入MQ之后就需要去考虑了！</li>
+<li>系统复杂性提高：加入MQ之后，你需要保证消息没有被重复消费、处理消息丢失的情况、保证消息传递的顺序性等等问题！</li>
+<li>一致性问题：上面讲了消息队列可以实现异步，消息队列带来的异步确实可以提高系统响应速度。但是，万一消息的真正消费者并没有正确消费消息怎么办？这样就会导致数据不一致的情况了！</li>
+</ul>
+<h3 id="JMS-VS-AMQP"><a href="#JMS-VS-AMQP" class="headerlink" title="JMS VS AMQP"></a>JMS VS AMQP</h3><h4 id="JMS简介"><a href="#JMS简介" class="headerlink" title="JMS简介"></a>JMS简介</h4><p>JMS（JAVA Message Service，java消息服务）是Java的消息服务，JMS的客户端之间可以通过JMS服务进行异步的消息传输。<strong>JMS API是一个消息服务的标准或者说是规范</strong>，允许应用程序组件基于JavaEE平台创建、发送、接收和读取消息。它使分布式通信耦合度更低，消息服务更加可靠以及异步性。<br><strong>ActiveMQ就是基于JMS规范实现的</strong>。</p>
+<h4 id="JMS两种消息模型"><a href="#JMS两种消息模型" class="headerlink" title="JMS两种消息模型"></a>JMS两种消息模型</h4><ol>
+<li><p>点到点（P2P）模型</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content4.png" class title="content4">
+<p>使用<strong>队列（Queue）</strong>作为消息通信载体；满足<strong>生产者与消费者模式</strong>，一条消息只能被一个消费者使用，未被消费的消息在队列中保留直到被消费或超时。比如：生产者发送100条消息的话，两个消费者来消费一般情况下两个消费者会按照消息发送的顺序各自消费一半（也就是你一个我一个的消费）</p>
+</li>
+<li><p>发布/订阅（Pub/Sub）模型</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content5.png" class title="content5">
+<p>发布订阅模型（Pub/Sub）使用<strong>主题（Topic）</strong>作为消息通信载体，类似于广播模式；发布者发布一条消息，该消息通过主题传递给所有的订阅者，<strong>在一条消息广播之后才订阅的用户则是收不到该条消息的</strong>。</p>
+</li>
+</ol>
+<h4 id="JMS五种不同的消息正文格式"><a href="#JMS五种不同的消息正文格式" class="headerlink" title="JMS五种不同的消息正文格式"></a>JMS五种不同的消息正文格式</h4><p>JMS定义了五种不同的消息正文格式，以及调用的消息类型，允许你发送并接收以一些不同形式的数据，提供现有的消息格式的一些级别的兼容性。</p>
+<ul>
+<li>StreamMessage – Java原始值的数据流</li>
+<li>MapMessage – 一套名称-值对</li>
+<li>TextMessage – 一套字符串对象</li>
+<li>ObjectMessage – 一个序列化的Java对象</li>
+<li>BytesMessage – 一个字节的数据流</li>
+</ul>
+<h4 id="AMQP"><a href="#AMQP" class="headerlink" title="AMQP"></a>AMQP</h4><p>AMQP，即Advanced Message Queuing Protocol，一个提供统一消息服务的应用层标准<strong>高级消息队列协议</strong>（二进制应用层协议），是应用层协议的一个开放标准，为面向消息的中间件设计，兼容JMS。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件同产品，不同的开发语言等条件的限制。<br><strong>RabbitMQ就是基于AMQP协议实现的。</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content6.png" class title="content6">
+<p><strong>总结：</strong></p>
+<ul>
+<li>AMQP为消息定义了线路层（wire-level protocol）的协议，而JMS所定义的是API规范。在Java体系中，多个client均可以通过JMS进行交互，不需要应用修改代码，但是其对跨平台的支持较差。而AMQP天然具有跨平台、跨语言特性</li>
+<li>JMS 支持TextMessage、MapMessage 等复杂的消息类型；而 AMQP 仅支持 byte[] 消息类型（复杂的类型可序列化后发送）</li>
+<li>由于Exchange 提供的路由算法，AMQP可以提供多样化的路由方式来传递消息到消息队列，而 JMS 仅支持队列和主题/订阅方式两种</li>
+</ul>
+<h3 id="常见的消息队列对比"><a href="#常见的消息队列对比" class="headerlink" title="常见的消息队列对比"></a>常见的消息队列对比</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content7.png" class title="content7">
+<p>总结：</p>
+<ul>
+<li>ActiveMQ 的社区算是比较成熟，但是较目前来说，ActiveMQ 的性能比较差，而且版本迭代很慢，不推荐使用</li>
+<li>RabbitMQ 在吞吐量方面虽然稍逊于 Kafka 和 RocketMQ ，但是由于它基于 erlang 开发，所以并发能力很强，性能极其好，延时很低，达到微秒级。</li>
+<li>RocketMQ 阿里出品，Java 系开源项目，源代码我们可以直接阅读，然后可以定制自己公司的MQ，并且 RocketMQ 有阿里巴巴的实际业务场景的实战考验。RocketMQ 社区活跃度相对较为一般，不过也还可以，文档相对来说简单一些，然后接口这块不是按照标准 JMS 规范走的有些系统要迁移需要修改大量代码。还有就是阿里出台的技术，你得做好这个技术万一被抛弃，社区黄掉的风险，那如果你们公司有技术实力我觉得用RocketMQ 挺好的</li>
+<li>kafka 的特点其实很明显，就是仅仅提供较少的核心功能，但是提供超高的吞吐量，ms 级的延迟，极高的可用性以及可靠性，而且分布式可以任意扩展。同时 kafka 最好是支撑较少的 topic 数量即可，保证其超高吞吐量。kafka 唯一的一点劣势是有可能消息重复消费，那么对数据准确性会造成极其轻微的影响，在大数据领域中以及日志采集中，这点轻微影响可以忽略这个特性天然适合大数据实时计算以及日志收集。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java进阶</category>
+      </categories>
+      <tags>
+        <tag>消息队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类的加载方式</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
+<li>隐式加载：new</li>
+<li>显式加载：ClassLoader.loadClass和Class.forName</li>
+</ol>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
+<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
+
+<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
+<p><strong>Class.forName:</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
+<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
+<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
       </tags>
   </entry>
   <entry>
@@ -312,106 +412,6 @@
       </categories>
       <tags>
         <tag>Java基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载方式</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
-<li>隐式加载：new</li>
-<li>显式加载：ClassLoader.loadClass和Class.forName</li>
-</ol>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
-<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
-
-<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
-<p><strong>Class.forName:</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
-<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
-<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>消息队列</title>
-    <url>/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</url>
-    <content><![CDATA[<h3 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h3><p>可以把消息队列比作是一个存放消息的容器。消息队列是分布式系统中重要的组件，使用消息队列主要是为了通过异步处理提高系统性能和削峰、降低系统耦合性。目前使用较多的消息队列有ActiveMQ，RabbitMQ，Kafka，RocketMQ。</p>
-<p>另外，队列Queue是一种先进先出的数据结构，所以消费消息时也是按照顺序来消费的。比如生产者发送消息1,2,3…对于消费者就会按照1,2,3…的顺序来消费。但是偶尔也会出现消息被消费的顺序不对的情况，比如某个消息消费失败又或者一个queue多个consumer也会导致消息被消费的顺序不对，我们一定要保证消息被消费的顺序正确。</p>
-<p>除了上面说的消息消费顺序的问题，使用消息队列，还要考虑如何保证消息不被重复消费？如何保证消息的可靠性传输（如何处理消息丢失的问题）？……等等问题。所以说使用消息队列也不是十全十美的，使用它也会让系统可用性降低、复杂度提高，另外需要我们保障一致性等问题。</p>
-<h3 id="为什么要用消息队列"><a href="#为什么要用消息队列" class="headerlink" title="为什么要用消息队列"></a>为什么要用消息队列</h3><p>使用消息队列主要有两点好处：</p>
-<ol>
-<li>通过异步处理提高系统性能（削峰、减少响应所需时间）；</li>
-<li>降低系统耦合性。</li>
-</ol>
-<p><strong>（1）通过异步处理提高系统性能（削峰、减少响应所需时间)</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content1.png" class title="消息队列1">
-<p>如上图，<strong>在不使用消息队列服务器的时候，用户的请求数据直接写入数据库，在高并发的情况下数据库压力剧增，使得响应速度变慢。但是在使用消息队列之后，用户的请求发送给消息队列之后立即返回，再由消息队列的消费者进程从消息队列中获取数据，异步写入数据库。由于消息队列服务器处理速度快于数据库（消息队列也比数据库有更好的伸缩性），因此响应速度得到大幅改善</strong>。</p>
-<p>通过以上分析可以得出<strong>消息队列具有很好的削峰作用的功能——即通过异步处理，将短时间高并发产生的事务消息存储在消息队列中，从而削平高峰期的并发事务</strong>。举例：在电子商务一些秒杀、促销活动中，合理使用消息队列可以有效抵御促销活动刚开始大量订单涌入对系统的冲击。如下图所示：</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content2.png" class title="content2">
-<p>因为<strong>用户请求数据写入消息队列之后就立即返回给用户了，但是请求数据在后续的业务校验、写数据库等操作中可能失败</strong>。因此使用消息队列进行异步处理之后，需要<strong>适当修改业务流程进行配合</strong>，比如<strong>用户在提交订单之后，订单数据写入消息队列，不能立即返回用户订单提交成功，需要在消息队列的订单消费者进程真正处理完该订单之后，甚至出库后，再通过电子邮件或短信通知用户订单成功</strong>，以免交易纠纷。这就类似我们平时手机订火车票和电影票。</p>
-<p><strong>（2）降低系统耦合性</strong><br>如果模块之间不存在直接调用，那么新增模块或者修改模块就对其他模块影响较小，这样系统的可扩展性无疑更好一些。<br>最常见的<strong>事件驱动架构</strong>类似生产者消费者模式，在大型网站中通常用利用消息队列实现事件驱动结构。如下图所示：</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content3.png" class title="content3">
-<p><strong>消息队列使利用发布-订阅模式工作，消息发送者（生产者）发布消息，一个或多个消息接收者（消费者）订阅消息</strong>。从上图可以看到<strong>消息发送者（生产者）和消息接收者（消费者）之间没有直接耦合</strong>，消息发送者将消息发送至分布式消息队列即结束对消息的处理，消息接收者从分布式消息队列获取该消息后进行后续处理，并不需要知道该消息从何而来。<strong>对新增业务，只要对该类消息感兴趣，即可订阅该消息，对原有系统和业务没有任何影响，从而实现网站业务的可扩展性设计</strong>。<br>消息接收者对消息进行过滤、处理、包装后，构造成一个新的消息类型，将消息继续发送出去，等待其他消息接受者订阅该消息。因此基于事件（消息对象）驱动的业务架构可以是一系列流程。</p>
-<p><strong>另外为了避免消息队列服务器宕机造成消息丢失，会将成功发送到消息队列的消息存储在消息生产者服务器上，等消息真正被消费者服务器处理后才删除消息。在消息队列服务器宕机后，生产者服务器会选择分布式消息队列服务器集群中的其他服务器发布消息</strong>。</p>
-<p><strong>备注</strong>：不要认为消息队列只能利用发布-订阅模式工作，只不过在解耦这个特定业务环境下是使用发布-订阅模式的。<strong>除了发布-订阅模式，还有点对点订阅模式（一个消息只有一个消费者），我们比较常用的是发布-订阅模式</strong>。另外，这两者消息模型是JMS提供的，AMQP协议还提供了5种消息模型。</p>
-<h3 id="使用消息队列带来的一些问题"><a href="#使用消息队列带来的一些问题" class="headerlink" title="使用消息队列带来的一些问题"></a>使用消息队列带来的一些问题</h3><ul>
-<li>系统可用性降低：系统可用性在某种程度上降低，在加入MQ之前，不用考虑消息丢失或者说MQ挂掉等等的情况，但是，引入MQ之后就需要去考虑了！</li>
-<li>系统复杂性提高：加入MQ之后，你需要保证消息没有被重复消费、处理消息丢失的情况、保证消息传递的顺序性等等问题！</li>
-<li>一致性问题：上面讲了消息队列可以实现异步，消息队列带来的异步确实可以提高系统响应速度。但是，万一消息的真正消费者并没有正确消费消息怎么办？这样就会导致数据不一致的情况了！</li>
-</ul>
-<h3 id="JMS-VS-AMQP"><a href="#JMS-VS-AMQP" class="headerlink" title="JMS VS AMQP"></a>JMS VS AMQP</h3><h4 id="JMS简介"><a href="#JMS简介" class="headerlink" title="JMS简介"></a>JMS简介</h4><p>JMS（JAVA Message Service，java消息服务）是Java的消息服务，JMS的客户端之间可以通过JMS服务进行异步的消息传输。<strong>JMS API是一个消息服务的标准或者说是规范</strong>，允许应用程序组件基于JavaEE平台创建、发送、接收和读取消息。它使分布式通信耦合度更低，消息服务更加可靠以及异步性。<br><strong>ActiveMQ就是基于JMS规范实现的</strong>。</p>
-<h4 id="JMS两种消息模型"><a href="#JMS两种消息模型" class="headerlink" title="JMS两种消息模型"></a>JMS两种消息模型</h4><ol>
-<li><p>点到点（P2P）模型</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content4.png" class title="content4">
-<p>使用<strong>队列（Queue）</strong>作为消息通信载体；满足<strong>生产者与消费者模式</strong>，一条消息只能被一个消费者使用，未被消费的消息在队列中保留直到被消费或超时。比如：生产者发送100条消息的话，两个消费者来消费一般情况下两个消费者会按照消息发送的顺序各自消费一半（也就是你一个我一个的消费）</p>
-</li>
-<li><p>发布/订阅（Pub/Sub）模型</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content5.png" class title="content5">
-<p>发布订阅模型（Pub/Sub）使用<strong>主题（Topic）</strong>作为消息通信载体，类似于广播模式；发布者发布一条消息，该消息通过主题传递给所有的订阅者，<strong>在一条消息广播之后才订阅的用户则是收不到该条消息的</strong>。</p>
-</li>
-</ol>
-<h4 id="JMS五种不同的消息正文格式"><a href="#JMS五种不同的消息正文格式" class="headerlink" title="JMS五种不同的消息正文格式"></a>JMS五种不同的消息正文格式</h4><p>JMS定义了五种不同的消息正文格式，以及调用的消息类型，允许你发送并接收以一些不同形式的数据，提供现有的消息格式的一些级别的兼容性。</p>
-<ul>
-<li>StreamMessage – Java原始值的数据流</li>
-<li>MapMessage – 一套名称-值对</li>
-<li>TextMessage – 一套字符串对象</li>
-<li>ObjectMessage – 一个序列化的Java对象</li>
-<li>BytesMessage – 一个字节的数据流</li>
-</ul>
-<h4 id="AMQP"><a href="#AMQP" class="headerlink" title="AMQP"></a>AMQP</h4><p>AMQP，即Advanced Message Queuing Protocol，一个提供统一消息服务的应用层标准<strong>高级消息队列协议</strong>（二进制应用层协议），是应用层协议的一个开放标准，为面向消息的中间件设计，兼容JMS。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件同产品，不同的开发语言等条件的限制。<br><strong>RabbitMQ就是基于AMQP协议实现的。</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content6.png" class title="content6">
-<p><strong>总结：</strong></p>
-<ul>
-<li>AMQP为消息定义了线路层（wire-level protocol）的协议，而JMS所定义的是API规范。在Java体系中，多个client均可以通过JMS进行交互，不需要应用修改代码，但是其对跨平台的支持较差。而AMQP天然具有跨平台、跨语言特性</li>
-<li>JMS 支持TextMessage、MapMessage 等复杂的消息类型；而 AMQP 仅支持 byte[] 消息类型（复杂的类型可序列化后发送）</li>
-<li>由于Exchange 提供的路由算法，AMQP可以提供多样化的路由方式来传递消息到消息队列，而 JMS 仅支持队列和主题/订阅方式两种</li>
-</ul>
-<h3 id="常见的消息队列对比"><a href="#常见的消息队列对比" class="headerlink" title="常见的消息队列对比"></a>常见的消息队列对比</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/content7.png" class title="content7">
-<p>总结：</p>
-<ul>
-<li>ActiveMQ 的社区算是比较成熟，但是较目前来说，ActiveMQ 的性能比较差，而且版本迭代很慢，不推荐使用</li>
-<li>RabbitMQ 在吞吐量方面虽然稍逊于 Kafka 和 RocketMQ ，但是由于它基于 erlang 开发，所以并发能力很强，性能极其好，延时很低，达到微秒级。</li>
-<li>RocketMQ 阿里出品，Java 系开源项目，源代码我们可以直接阅读，然后可以定制自己公司的MQ，并且 RocketMQ 有阿里巴巴的实际业务场景的实战考验。RocketMQ 社区活跃度相对较为一般，不过也还可以，文档相对来说简单一些，然后接口这块不是按照标准 JMS 规范走的有些系统要迁移需要修改大量代码。还有就是阿里出台的技术，你得做好这个技术万一被抛弃，社区黄掉的风险，那如果你们公司有技术实力我觉得用RocketMQ 挺好的</li>
-<li>kafka 的特点其实很明显，就是仅仅提供较少的核心功能，但是提供超高的吞吐量，ms 级的延迟，极高的可用性以及可靠性，而且分布式可以任意扩展。同时 kafka 最好是支撑较少的 topic 数量即可，保证其超高吞吐量。kafka 唯一的一点劣势是有可能消息重复消费，那么对数据准确性会造成极其轻微的影响，在大数据领域中以及日志采集中，这点轻微影响可以忽略这个特性天然适合大数据实时计算以及日志收集。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java进阶</category>
-      </categories>
-      <tags>
-        <tag>消息队列</tag>
       </tags>
   </entry>
   <entry>
