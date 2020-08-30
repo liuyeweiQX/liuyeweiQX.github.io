@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/gallery/movies/index.html</loc>
+    <loc>http://www.liuyewei.com/gallery/food/index.html</loc>
     
     <lastmod>2020-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/gallery/food/index.html</loc>
+    <loc>http://www.liuyewei.com/gallery/movies/index.html</loc>
     
     <lastmod>2020-08-11</lastmod>
     
@@ -158,6 +158,13 @@
 
   
   <url>
+    <loc>http://www.liuyewei.com/tags/JPA/</loc>
+    <lastmod>2020-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.liuyewei.com/tags/Markdown/</loc>
     <lastmod>2020-08-30</lastmod>
     <changefreq>daily</changefreq>
@@ -179,7 +186,7 @@
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/tags/JPA/</loc>
+    <loc>http://www.liuyewei.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
     <lastmod>2020-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -187,13 +194,6 @@
   
   <url>
     <loc>http://www.liuyewei.com/tags/%E7%B1%BB/</loc>
-    <lastmod>2020-08-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
     <lastmod>2020-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -216,6 +216,13 @@
 
   
   <url>
+    <loc>http://www.liuyewei.com/categories/%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2020-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.liuyewei.com/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-08-30</lastmod>
     <changefreq>daily</changefreq>
@@ -231,13 +238,6 @@
   
   <url>
     <loc>http://www.liuyewei.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2020-08-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/categories/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2020-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
