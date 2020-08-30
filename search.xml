@@ -1,59 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JPA</title>
-    <url>/2020/08/12/JPA/</url>
-    <content><![CDATA[<h3 id="JPA是什么"><a href="#JPA是什么" class="headerlink" title="JPA是什么"></a>JPA是什么</h3><p>JPA（Java Persistence API）Java持久化API。是一套sun公司Java官方制定的ORM方案，是规范，是标准，sun公司自己并没有实现。</p>
-<p><strong>关键点：ORM，标准 概念(关键字)</strong></p>
-<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么"></a>ORM是什么</h3><p>ORM（Object Relational Mapping）对象关系映射。问：ORM有什么用？在操作数据库之前，先把数据表与实体类关联起来。然后通过实体类的对象操作（增删改查）数据库表，这个就是ORM的行为！所以：ORM是一个实现使用对象操作数据库的设计思想！通过这句话，我们知道JPA的作用就是通过对象操作数据库的，不用编写sql语句。</p>
-<h3 id="JPA的实现者"><a href="#JPA的实现者" class="headerlink" title="JPA的实现者"></a>JPA的实现者</h3><p>既然我们说JPA是一套标准，意味着，它只是一套实现ORM理论的接口。没有实现的代码。那么我们必须要有具体实现者才可以完成ORM操作功能的实现！ </p>
-<p>市场上主流的JPA框架（实现者）有：Hibernate(JBoss)、EclipseTop(Eclipse社区)、OpenJPA(Apache基金会)其中Hibernate是众多实现者之中，性能最好的。</p>
-<h3 id="JPA的作用是什么"><a href="#JPA的作用是什么" class="headerlink" title="JPA的作用是什么"></a>JPA的作用是什么</h3><p>JPA是ORM的一套标准，既然JPA为ORM而生，那么JPA的作用就是实现使用对象操作数据库，不用写SQL</p>
-<p>数据库是用sql操作的，那用对象操作，由谁来产生SQL?</p>
-<p>答：JPA实现框架</p>
-<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
-<li><p>实体（pojo）表示关系数据库中的一个表</p>
-</li>
-<li><p>每个实体实例对应着该表中的一行</p>
-</li>
-<li><p>类必须用javax.persistence.Entity注解</p>
-</li>
-<li><p>类必须含有一个public或者protected的无参构造函数</p>
-</li>
-<li><p>当实体实例被当做值以分离对象的方式进行传递（例如通过会话bean的远程业务接口）则该类必须实现Serializable（序列化）接口</p>
-</li>
-<li><p>唯一的对象标志符，简单主键（javax.persistence.Id），复合主键（javax.persistence.EmbeddledId和javax.persistence.IdClass）</p>
-</li>
-</ul>
-<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><ul>
-<li><p>一对一：@OneToOne</p>
-</li>
-<li><p>一对多：@OneToMany</p>
-</li>
-<li><p>多对一：@ManyToOne</p>
-</li>
-<li><p>多对多：@ManyToMany</p>
-</li>
-</ul>
-<h3 id="EntityManager"><a href="#EntityManager" class="headerlink" title="EntityManager"></a>EntityManager</h3><ul>
-<li><p>管理实体的一个类，接口</p>
-</li>
-<li><p>定义与持久性上下文进行交互的方法</p>
-</li>
-<li><p>创建和删除持久实体类，通过实体的主键查找实体</p>
-</li>
-<li><p>允许在实体类上进行查询</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>框架</category>
-      </categories>
-      <tags>
-        <tag>JPA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown小结</title>
     <url>/2020/08/03/Markdown%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
@@ -230,6 +177,89 @@
       </tags>
   </entry>
   <entry>
+    <title>JPA</title>
+    <url>/2020/08/12/JPA/</url>
+    <content><![CDATA[<h3 id="JPA是什么"><a href="#JPA是什么" class="headerlink" title="JPA是什么"></a>JPA是什么</h3><p>JPA（Java Persistence API）Java持久化API。是一套sun公司Java官方制定的ORM方案，是规范，是标准，sun公司自己并没有实现。</p>
+<p><strong>关键点：ORM，标准 概念(关键字)</strong></p>
+<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么"></a>ORM是什么</h3><p>ORM（Object Relational Mapping）对象关系映射。问：ORM有什么用？在操作数据库之前，先把数据表与实体类关联起来。然后通过实体类的对象操作（增删改查）数据库表，这个就是ORM的行为！所以：ORM是一个实现使用对象操作数据库的设计思想！通过这句话，我们知道JPA的作用就是通过对象操作数据库的，不用编写sql语句。</p>
+<h3 id="JPA的实现者"><a href="#JPA的实现者" class="headerlink" title="JPA的实现者"></a>JPA的实现者</h3><p>既然我们说JPA是一套标准，意味着，它只是一套实现ORM理论的接口。没有实现的代码。那么我们必须要有具体实现者才可以完成ORM操作功能的实现！ </p>
+<p>市场上主流的JPA框架（实现者）有：Hibernate(JBoss)、EclipseTop(Eclipse社区)、OpenJPA(Apache基金会)其中Hibernate是众多实现者之中，性能最好的。</p>
+<h3 id="JPA的作用是什么"><a href="#JPA的作用是什么" class="headerlink" title="JPA的作用是什么"></a>JPA的作用是什么</h3><p>JPA是ORM的一套标准，既然JPA为ORM而生，那么JPA的作用就是实现使用对象操作数据库，不用写SQL</p>
+<p>数据库是用sql操作的，那用对象操作，由谁来产生SQL?</p>
+<p>答：JPA实现框架</p>
+<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li><p>实体（pojo）表示关系数据库中的一个表</p>
+</li>
+<li><p>每个实体实例对应着该表中的一行</p>
+</li>
+<li><p>类必须用javax.persistence.Entity注解</p>
+</li>
+<li><p>类必须含有一个public或者protected的无参构造函数</p>
+</li>
+<li><p>当实体实例被当做值以分离对象的方式进行传递（例如通过会话bean的远程业务接口）则该类必须实现Serializable（序列化）接口</p>
+</li>
+<li><p>唯一的对象标志符，简单主键（javax.persistence.Id），复合主键（javax.persistence.EmbeddledId和javax.persistence.IdClass）</p>
+</li>
+</ul>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><ul>
+<li><p>一对一：@OneToOne</p>
+</li>
+<li><p>一对多：@OneToMany</p>
+</li>
+<li><p>多对一：@ManyToOne</p>
+</li>
+<li><p>多对多：@ManyToMany</p>
+</li>
+</ul>
+<h3 id="EntityManager"><a href="#EntityManager" class="headerlink" title="EntityManager"></a>EntityManager</h3><ul>
+<li><p>管理实体的一个类，接口</p>
+</li>
+<li><p>定义与持久性上下文进行交互的方法</p>
+</li>
+<li><p>创建和删除持久实体类，通过实体的主键查找实体</p>
+</li>
+<li><p>允许在实体类上进行查询</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>JPA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类的加载方式</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
+<li>隐式加载：new</li>
+<li>显式加载：ClassLoader.loadClass和Class.forName</li>
+</ol>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
+<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
+
+<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
+<p><strong>Class.forName:</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
+<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
+<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>消息队列</title>
     <url>/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h3 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h3><p>可以把消息队列比作是一个存放消息的容器。消息队列是分布式系统中重要的组件，使用消息队列主要是为了通过异步处理提高系统性能和削峰、降低系统耦合性。目前使用较多的消息队列有ActiveMQ，RabbitMQ，Kafka，RocketMQ。</p>
@@ -297,36 +327,6 @@
       </categories>
       <tags>
         <tag>消息队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载方式</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
-<li>隐式加载：new</li>
-<li>显式加载：ClassLoader.loadClass和Class.forName</li>
-</ol>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
-<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
-
-<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
-<p><strong>Class.forName:</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
-<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
-<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
       </tags>
   </entry>
   <entry>
