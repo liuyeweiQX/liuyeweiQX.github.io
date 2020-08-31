@@ -6,7 +6,7 @@
 
 .iconfont {
     font-family: iconfont!important;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
@@ -19,12 +19,12 @@
 .card_icon {
     /* 修改颜色  color: blue; */
     /* 修改大小 */
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .weiboColor {
     color: red;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .icon-juejin:before {

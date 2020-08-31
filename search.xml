@@ -300,6 +300,36 @@
       </tags>
   </entry>
   <entry>
+    <title>类的加载方式</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
+<li>隐式加载：new</li>
+<li>显式加载：ClassLoader.loadClass和Class.forName</li>
+</ol>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
+<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
+
+<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
+<p><strong>Class.forName:</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
+<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
+<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>类的加载过程</title>
     <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="Java-类加载机制"><a href="#Java-类加载机制" class="headerlink" title="Java 类加载机制"></a>Java 类加载机制</h3><p>类从被加载到JVM中开始，到卸载为止，整个生命周期包括：<strong>加载、验证、准备、解析、初始化、使用和卸载七个阶段</strong>。<br>其中类加载过程包括加载、验证、准备、解析和初始化五个阶段。</p>
@@ -353,36 +383,6 @@
 <img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content2.png" class title="content2">
 <img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content3.png" class title="content3">
 <img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content4.png" class title="content4">                                                                                                                                                   ]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载方式</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
-<li>隐式加载：new</li>
-<li>显式加载：ClassLoader.loadClass和Class.forName</li>
-</ol>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
-<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
-
-<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
-<p><strong>Class.forName:</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
-<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
-<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
-]]></content>
       <categories>
         <category>Java</category>
       </categories>
