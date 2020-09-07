@@ -2,65 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.liuyewei.com/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
+    <loc>http://www.liuyewei.com/2020/08/12/JPA/</loc>
     
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/2020/08/26/Spring%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2020-09-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/2020/07/12/%E8%87%AA%E5%8A%A8%E6%8B%86%E8%A3%85%E7%AE%B1/</loc>
-    
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/2020/08/03/Markdown%E5%B0%8F%E7%BB%93/</loc>
     
-    <lastmod>2020-09-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</loc>
-    
-    <lastmod>2020-09-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</loc>
-    
-    <lastmod>2020-09-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/2020/08/12/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95/</loc>
-    
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/2020/07/21/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB%E4%BA%92%E8%AE%BF/</loc>
     
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/2020/08/12/JPA/</loc>
+    <loc>http://www.liuyewei.com/2020/08/12/%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95/</loc>
     
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
+    
+    <lastmod>2020-09-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2020-09-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</loc>
+    
+    <lastmod>2020-09-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/2020/07/12/%E8%87%AA%E5%8A%A8%E6%8B%86%E8%A3%85%E7%AE%B1/</loc>
+    
+    <lastmod>2020-09-07</lastmod>
     
   </url>
   
@@ -151,7 +151,7 @@
 
   <url>
     <loc>http://www.liuyewei.com/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -159,56 +159,56 @@
   
   <url>
     <loc>http://www.liuyewei.com/tags/JPA/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/Markdown/</loc>
-    <lastmod>2020-09-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/%E7%B1%BB/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/tags/Spring/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -217,35 +217,35 @@
   
   <url>
     <loc>http://www.liuyewei.com/categories/%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-09-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.liuyewei.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/categories/Java/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.liuyewei.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://www.liuyewei.com/categories/Java%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2020-09-06</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
