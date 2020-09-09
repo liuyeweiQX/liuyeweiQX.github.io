@@ -47,59 +47,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JPA</title>
-    <url>/2020/08/12/JPA/</url>
-    <content><![CDATA[<h3 id="JPA是什么"><a href="#JPA是什么" class="headerlink" title="JPA是什么"></a>JPA是什么</h3><p>JPA（Java Persistence API）Java持久化API。是一套sun公司Java官方制定的ORM方案，是规范，是标准，sun公司自己并没有实现。</p>
-<p><strong>关键点：ORM，标准 概念(关键字)</strong></p>
-<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么"></a>ORM是什么</h3><p>ORM（Object Relational Mapping）对象关系映射。问：ORM有什么用？在操作数据库之前，先把数据表与实体类关联起来。然后通过实体类的对象操作（增删改查）数据库表，这个就是ORM的行为！所以：ORM是一个实现使用对象操作数据库的设计思想！通过这句话，我们知道JPA的作用就是通过对象操作数据库的，不用编写sql语句。</p>
-<h3 id="JPA的实现者"><a href="#JPA的实现者" class="headerlink" title="JPA的实现者"></a>JPA的实现者</h3><p>既然我们说JPA是一套标准，意味着，它只是一套实现ORM理论的接口。没有实现的代码。那么我们必须要有具体实现者才可以完成ORM操作功能的实现！ </p>
-<p>市场上主流的JPA框架（实现者）有：Hibernate(JBoss)、EclipseTop(Eclipse社区)、OpenJPA(Apache基金会)其中Hibernate是众多实现者之中，性能最好的。</p>
-<h3 id="JPA的作用是什么"><a href="#JPA的作用是什么" class="headerlink" title="JPA的作用是什么"></a>JPA的作用是什么</h3><p>JPA是ORM的一套标准，既然JPA为ORM而生，那么JPA的作用就是实现使用对象操作数据库，不用写SQL</p>
-<p>数据库是用sql操作的，那用对象操作，由谁来产生SQL?</p>
-<p>答：JPA实现框架</p>
-<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
-<li><p>实体（pojo）表示关系数据库中的一个表</p>
-</li>
-<li><p>每个实体实例对应着该表中的一行</p>
-</li>
-<li><p>类必须用javax.persistence.Entity注解</p>
-</li>
-<li><p>类必须含有一个public或者protected的无参构造函数</p>
-</li>
-<li><p>当实体实例被当做值以分离对象的方式进行传递（例如通过会话bean的远程业务接口）则该类必须实现Serializable（序列化）接口</p>
-</li>
-<li><p>唯一的对象标志符，简单主键（javax.persistence.Id），复合主键（javax.persistence.EmbeddledId和javax.persistence.IdClass）</p>
-</li>
-</ul>
-<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><ul>
-<li><p>一对一：@OneToOne</p>
-</li>
-<li><p>一对多：@OneToMany</p>
-</li>
-<li><p>多对一：@ManyToOne</p>
-</li>
-<li><p>多对多：@ManyToMany</p>
-</li>
-</ul>
-<h3 id="EntityManager"><a href="#EntityManager" class="headerlink" title="EntityManager"></a>EntityManager</h3><ul>
-<li><p>管理实体的一个类，接口</p>
-</li>
-<li><p>定义与持久性上下文进行交互的方法</p>
-</li>
-<li><p>创建和删除持久实体类，通过实体的主键查找实体</p>
-</li>
-<li><p>允许在实体类上进行查询</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>框架</category>
-      </categories>
-      <tags>
-        <tag>JPA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown小结</title>
     <url>/2020/08/03/Markdown%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
@@ -168,6 +115,59 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JPA</title>
+    <url>/2020/08/12/JPA/</url>
+    <content><![CDATA[<h3 id="JPA是什么"><a href="#JPA是什么" class="headerlink" title="JPA是什么"></a>JPA是什么</h3><p>JPA（Java Persistence API）Java持久化API。是一套sun公司Java官方制定的ORM方案，是规范，是标准，sun公司自己并没有实现。</p>
+<p><strong>关键点：ORM，标准 概念(关键字)</strong></p>
+<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么"></a>ORM是什么</h3><p>ORM（Object Relational Mapping）对象关系映射。问：ORM有什么用？在操作数据库之前，先把数据表与实体类关联起来。然后通过实体类的对象操作（增删改查）数据库表，这个就是ORM的行为！所以：ORM是一个实现使用对象操作数据库的设计思想！通过这句话，我们知道JPA的作用就是通过对象操作数据库的，不用编写sql语句。</p>
+<h3 id="JPA的实现者"><a href="#JPA的实现者" class="headerlink" title="JPA的实现者"></a>JPA的实现者</h3><p>既然我们说JPA是一套标准，意味着，它只是一套实现ORM理论的接口。没有实现的代码。那么我们必须要有具体实现者才可以完成ORM操作功能的实现！ </p>
+<p>市场上主流的JPA框架（实现者）有：Hibernate(JBoss)、EclipseTop(Eclipse社区)、OpenJPA(Apache基金会)其中Hibernate是众多实现者之中，性能最好的。</p>
+<h3 id="JPA的作用是什么"><a href="#JPA的作用是什么" class="headerlink" title="JPA的作用是什么"></a>JPA的作用是什么</h3><p>JPA是ORM的一套标准，既然JPA为ORM而生，那么JPA的作用就是实现使用对象操作数据库，不用写SQL</p>
+<p>数据库是用sql操作的，那用对象操作，由谁来产生SQL?</p>
+<p>答：JPA实现框架</p>
+<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li><p>实体（pojo）表示关系数据库中的一个表</p>
+</li>
+<li><p>每个实体实例对应着该表中的一行</p>
+</li>
+<li><p>类必须用javax.persistence.Entity注解</p>
+</li>
+<li><p>类必须含有一个public或者protected的无参构造函数</p>
+</li>
+<li><p>当实体实例被当做值以分离对象的方式进行传递（例如通过会话bean的远程业务接口）则该类必须实现Serializable（序列化）接口</p>
+</li>
+<li><p>唯一的对象标志符，简单主键（javax.persistence.Id），复合主键（javax.persistence.EmbeddledId和javax.persistence.IdClass）</p>
+</li>
+</ul>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><ul>
+<li><p>一对一：@OneToOne</p>
+</li>
+<li><p>一对多：@OneToMany</p>
+</li>
+<li><p>多对一：@ManyToOne</p>
+</li>
+<li><p>多对多：@ManyToMany</p>
+</li>
+</ul>
+<h3 id="EntityManager"><a href="#EntityManager" class="headerlink" title="EntityManager"></a>EntityManager</h3><ul>
+<li><p>管理实体的一个类，接口</p>
+</li>
+<li><p>定义与持久性上下文进行交互的方法</p>
+</li>
+<li><p>创建和删除持久实体类，通过实体的主键查找实体</p>
+</li>
+<li><p>允许在实体类上进行查询</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>JPA</tag>
       </tags>
   </entry>
   <entry>
@@ -276,6 +276,97 @@
       </tags>
   </entry>
   <entry>
+    <title>类的加载过程</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="Java-类加载机制"><a href="#Java-类加载机制" class="headerlink" title="Java 类加载机制"></a>Java 类加载机制</h3><p>类从被加载到JVM中开始，到卸载为止，整个生命周期包括：<strong>加载、验证、准备、解析、初始化、使用和卸载七个阶段</strong>。<br>其中类加载过程包括加载、验证、准备、解析和初始化五个阶段。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content1.png" class title="content1">
+
+<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><ol>
+<li>通过类加载器，加载.class文件到内存中。</li>
+<li>将读取到.classs数据存储到运行时内存区的方法区。</li>
+<li>然后将其转换为一个与目标类型对应的java.lang.Class对象实例。这个Class对象在日后就会作为方法区中该类的各种数据的访问入口。</li>
+</ol>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>确保被加载的类（.class文件的字节流），是否按照java虚拟的规范。不会造成安全问题</p>
+<ol>
+<li>文件格式验证:<br>第一阶段要验证字节流是否符合 Class文件格式的规范, 井且能被当前版本的虚拟机处理。这一阶段可能包括下面这些验证点：</li>
+</ol>
+<ul>
+<li>是否以魔数 0xCAFEBABE开头</li>
+<li>主、次版本号是否在当前虚拟机处理范围之内。</li>
+<li>常量池的常量中是否有不被支持的常量类型(检査常量tag 标志)。</li>
+<li>指向常量的各种索引值中是否有指向不存在的常量或不符合装型的常量。</li>
+<li>CONSTANT_Utf8_info型的常量中是否有不符合 UTF8编码的数据</li>
+<li>Class 文件中各个部分及文件本身是否有被删除的或附加的其他信息 实际上第一阶段的验证点还远不止这些, 这是其中的一部分。只有通过了这个阶段的验证之后, 字节流才会进入内存的方法区中进行存储, 所以后面的三个验证阶段全部是基于方法区的存储结构进行的，不会再直接操作字节流。</li>
+</ul>
+<ol start="2">
+<li>元数据验证<br>第二阶段是对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求,这个阶段可能包括的验证点如下:</li>
+</ol>
+<ul>
+<li>这个类是否有父类(除了java.lang.object之外,所有的类都应当有父类)</li>
+<li>这个类的父类是否继承了不允许被继承的类(被finaI修饰的类)<br>如果这个类不是抽象类, 是否实現了其父类或接口之中要求实现的所有方法类中的字段、方法是否与父类产生了矛盾(例如覆盖了父类的final字段, 或者出現不符合规则的方法重载, 例如方法参数都一致, 但返回值类型却不同等) 第二阶段的验证点同样远不止这些，这一阶段的主要目的是对类的元数据信息进行语义检验, 保证不存在不符合 Java语言规范的元数据信息。</li>
+</ul>
+<ol start="3">
+<li>字节码验证<br>第三阶段是整个验证过程中最复杂的一个阶段, 主要目的是通过数据流和控制流的分析，确定语义是合法的。符号逻辑的。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析，保证被校验类的方法在运行时不会做出危害虚拟机安全的行为，例如：</li>
+</ol>
+<ul>
+<li>保证任意时刻操作数栈的数据装型与指令代码序列都能配合工作, 例如不会出现类似这样的情况:在操作栈中放置了一个 int类型的数据, 使用时却按long类型来加载入本地变量表中。</li>
+<li>保证跳转指令不会跳转到方法体以外的字节码指令上</li>
+<li>保证方法体中的类型转换是有效的, 例如可以把一个子类对象赋值给父类数据装型，这是安全的,但是把父类对象意赋值给子类数据类型,甚至把对象赋值给与它毫无继承关系、 完全不相干的一个数据类型, 则是危险和不合法的。 即使一个方法体通过了字节码验证, 也不能说明其一定就是安全的。</li>
+</ul>
+<ol start="4">
+<li>符号引用验证<br>最后一个阶段的校验发生在虚拟机将符号引用转化为直接引用的时候, 这个转化动作将在连接的第三个阶段——解析阶段中发生。符号引用验证可以看做是对类自身以外(常量池中的各种符号引用) 的信息进行匹配性的校验, 通常需要校验以下内容:</li>
+</ol>
+<ul>
+<li>符号引用中通过字将串描述的全限定名是否能找到对应的类</li>
+<li>在指定类中是否存在符合方法的字段描述符以及简单名称所描述的方法和字段 。</li>
+<li>符号引用中的类、字段和方法的访问性(private、 protected、 public、 default)是否可被当前     类访问</li>
+<li>符号引用验证的目的是确保解析动作能正常执行, 如果无法通过符号引用验证, 将会抛出一个java.lang.IncompatibleClassChangError异常的子类, 如 java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError等。</li>
+</ul>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>主要是为类变量（注意，不是实例变量）分配内存，并且赋予初值，此时的赋值是Java虚拟机根据不同变量类型的默认初始值：<br>如8种基本类型的初值，默认为0；引用类型的初值则为null；常量的初值即为代码中设置的值<br> 1、final static temp = 100，此时temp就是赋值 100。<br> 2、String temp = “123456”，此时temp值就是null。<br> 3、int temp = 100，此时temp值就是0。</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>将类的二进制数据中的符号引用替换成直接引用（符号引用是用一组符号描述所引用的目标；直接引用是指向目标的指针）<br>可以认为是一些静态绑定的会被解析，动态绑定则只会在运行时进行解析；静态绑定包括一些final方法(不可以重写),static方法(只会属于当前类)，构造器(不会被重写)<br>在解析阶段，虚拟机会把所有的类名，方法名，字段名这些符号引用替换为具体的内存地址或偏移量，也就是直接引用。</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>初始化，则是为标记为常量值的字段赋值的过程。<br>换句话说，只对static修饰的变量或语句块进行初始化。<br>如果初始化一个类的时候，其父类尚未初始化，则优先初始化其父类。<br>如果同时包含多个静态变量和静态代码块，则按照自上而下的顺序依次执行。</p>
+<h3 id="涉及问题"><a href="#涉及问题" class="headerlink" title="涉及问题"></a>涉及问题</h3><p>一个类的构造器，代码块，静态代码块，成员变量的的执行顺序。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content2.png" class title="content2">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content3.png" class title="content3">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content4.png" class title="content4">                                                                                                                                                   ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类的加载方式</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
+<li>隐式加载：new</li>
+<li>显式加载：ClassLoader.loadClass和Class.forName</li>
+</ol>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
+<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
+
+<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
+<p><strong>Class.forName:</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
+<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
+<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>消息队列</title>
     <url>/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h3 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h3><p>可以把消息队列比作是一个存放消息的容器。消息队列是分布式系统中重要的组件，使用消息队列主要是为了通过异步处理提高系统性能和削峰、降低系统耦合性。目前使用较多的消息队列有ActiveMQ，RabbitMQ，Kafka，RocketMQ。</p>
@@ -343,97 +434,6 @@
       </categories>
       <tags>
         <tag>消息队列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载方式</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
-<li>隐式加载：new</li>
-<li>显式加载：ClassLoader.loadClass和Class.forName</li>
-</ol>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
-<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
-
-<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
-<p><strong>Class.forName:</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
-<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
-<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载过程</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="Java-类加载机制"><a href="#Java-类加载机制" class="headerlink" title="Java 类加载机制"></a>Java 类加载机制</h3><p>类从被加载到JVM中开始，到卸载为止，整个生命周期包括：<strong>加载、验证、准备、解析、初始化、使用和卸载七个阶段</strong>。<br>其中类加载过程包括加载、验证、准备、解析和初始化五个阶段。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content1.png" class title="content1">
-
-<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><ol>
-<li>通过类加载器，加载.class文件到内存中。</li>
-<li>将读取到.classs数据存储到运行时内存区的方法区。</li>
-<li>然后将其转换为一个与目标类型对应的java.lang.Class对象实例。这个Class对象在日后就会作为方法区中该类的各种数据的访问入口。</li>
-</ol>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>确保被加载的类（.class文件的字节流），是否按照java虚拟的规范。不会造成安全问题</p>
-<ol>
-<li>文件格式验证:<br>第一阶段要验证字节流是否符合 Class文件格式的规范, 井且能被当前版本的虚拟机处理。这一阶段可能包括下面这些验证点：</li>
-</ol>
-<ul>
-<li>是否以魔数 0xCAFEBABE开头</li>
-<li>主、次版本号是否在当前虚拟机处理范围之内。</li>
-<li>常量池的常量中是否有不被支持的常量类型(检査常量tag 标志)。</li>
-<li>指向常量的各种索引值中是否有指向不存在的常量或不符合装型的常量。</li>
-<li>CONSTANT_Utf8_info型的常量中是否有不符合 UTF8编码的数据</li>
-<li>Class 文件中各个部分及文件本身是否有被删除的或附加的其他信息 实际上第一阶段的验证点还远不止这些, 这是其中的一部分。只有通过了这个阶段的验证之后, 字节流才会进入内存的方法区中进行存储, 所以后面的三个验证阶段全部是基于方法区的存储结构进行的，不会再直接操作字节流。</li>
-</ul>
-<ol start="2">
-<li>元数据验证<br>第二阶段是对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范的要求,这个阶段可能包括的验证点如下:</li>
-</ol>
-<ul>
-<li>这个类是否有父类(除了java.lang.object之外,所有的类都应当有父类)</li>
-<li>这个类的父类是否继承了不允许被继承的类(被finaI修饰的类)<br>如果这个类不是抽象类, 是否实現了其父类或接口之中要求实现的所有方法类中的字段、方法是否与父类产生了矛盾(例如覆盖了父类的final字段, 或者出現不符合规则的方法重载, 例如方法参数都一致, 但返回值类型却不同等) 第二阶段的验证点同样远不止这些，这一阶段的主要目的是对类的元数据信息进行语义检验, 保证不存在不符合 Java语言规范的元数据信息。</li>
-</ul>
-<ol start="3">
-<li>字节码验证<br>第三阶段是整个验证过程中最复杂的一个阶段, 主要目的是通过数据流和控制流的分析，确定语义是合法的。符号逻辑的。在第二阶段对元数据信息中的数据类型做完校验后，这阶段将对类的方法体进行校验分析，保证被校验类的方法在运行时不会做出危害虚拟机安全的行为，例如：</li>
-</ol>
-<ul>
-<li>保证任意时刻操作数栈的数据装型与指令代码序列都能配合工作, 例如不会出现类似这样的情况:在操作栈中放置了一个 int类型的数据, 使用时却按long类型来加载入本地变量表中。</li>
-<li>保证跳转指令不会跳转到方法体以外的字节码指令上</li>
-<li>保证方法体中的类型转换是有效的, 例如可以把一个子类对象赋值给父类数据装型，这是安全的,但是把父类对象意赋值给子类数据类型,甚至把对象赋值给与它毫无继承关系、 完全不相干的一个数据类型, 则是危险和不合法的。 即使一个方法体通过了字节码验证, 也不能说明其一定就是安全的。</li>
-</ul>
-<ol start="4">
-<li>符号引用验证<br>最后一个阶段的校验发生在虚拟机将符号引用转化为直接引用的时候, 这个转化动作将在连接的第三个阶段——解析阶段中发生。符号引用验证可以看做是对类自身以外(常量池中的各种符号引用) 的信息进行匹配性的校验, 通常需要校验以下内容:</li>
-</ol>
-<ul>
-<li>符号引用中通过字将串描述的全限定名是否能找到对应的类</li>
-<li>在指定类中是否存在符合方法的字段描述符以及简单名称所描述的方法和字段 。</li>
-<li>符号引用中的类、字段和方法的访问性(private、 protected、 public、 default)是否可被当前     类访问</li>
-<li>符号引用验证的目的是确保解析动作能正常执行, 如果无法通过符号引用验证, 将会抛出一个java.lang.IncompatibleClassChangError异常的子类, 如 java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError等。</li>
-</ul>
-<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>主要是为类变量（注意，不是实例变量）分配内存，并且赋予初值，此时的赋值是Java虚拟机根据不同变量类型的默认初始值：<br>如8种基本类型的初值，默认为0；引用类型的初值则为null；常量的初值即为代码中设置的值<br> 1、final static temp = 100，此时temp就是赋值 100。<br> 2、String temp = “123456”，此时temp值就是null。<br> 3、int temp = 100，此时temp值就是0。</p>
-<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>将类的二进制数据中的符号引用替换成直接引用（符号引用是用一组符号描述所引用的目标；直接引用是指向目标的指针）<br>可以认为是一些静态绑定的会被解析，动态绑定则只会在运行时进行解析；静态绑定包括一些final方法(不可以重写),static方法(只会属于当前类)，构造器(不会被重写)<br>在解析阶段，虚拟机会把所有的类名，方法名，字段名这些符号引用替换为具体的内存地址或偏移量，也就是直接引用。</p>
-<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>初始化，则是为标记为常量值的字段赋值的过程。<br>换句话说，只对static修饰的变量或语句块进行初始化。<br>如果初始化一个类的时候，其父类尚未初始化，则优先初始化其父类。<br>如果同时包含多个静态变量和静态代码块，则按照自上而下的顺序依次执行。</p>
-<h3 id="涉及问题"><a href="#涉及问题" class="headerlink" title="涉及问题"></a>涉及问题</h3><p>一个类的构造器，代码块，静态代码块，成员变量的的执行顺序。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content2.png" class title="content2">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content3.png" class title="content3">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/content4.png" class title="content4">                                                                                                                                                   ]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
       </tags>
   </entry>
   <entry>
