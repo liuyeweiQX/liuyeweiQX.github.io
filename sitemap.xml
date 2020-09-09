@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.liuyewei.com/2020/09/08/Gulp%E5%8E%8B%E7%BC%A9%E5%92%8CPWA/</loc>
+    <loc>http://www.liuyewei.com/tellme/index.html</loc>
     
-    <lastmod>2020-09-08</lastmod>
+    <lastmod>2020-09-09</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/tellme/index.html</loc>
+    <loc>http://www.liuyewei.com/2020/09/08/Gulp%E5%8E%8B%E7%BC%A9%E5%92%8CPWA/</loc>
     
-    <lastmod>2020-09-08</lastmod>
+    <lastmod>2020-09-09</lastmod>
     
   </url>
   
@@ -186,14 +186,14 @@
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://www.liuyewei.com/tags/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/tags/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB/</loc>
+    <loc>http://www.liuyewei.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -251,14 +251,14 @@
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://www.liuyewei.com/categories/Java/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/categories/Java/</loc>
+    <loc>http://www.liuyewei.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
