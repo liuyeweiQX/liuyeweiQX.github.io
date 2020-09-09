@@ -165,14 +165,14 @@
 
   
   <url>
-    <loc>http://www.liuyewei.com/tags/JPA/</loc>
+    <loc>http://www.liuyewei.com/tags/%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/tags/%E4%BC%98%E5%8C%96/</loc>
+    <loc>http://www.liuyewei.com/tags/JPA/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -230,14 +230,14 @@
 
   
   <url>
-    <loc>http://www.liuyewei.com/categories/%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://www.liuyewei.com/categories/Hexo/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://www.liuyewei.com/categories/Hexo/</loc>
+    <loc>http://www.liuyewei.com/categories/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
