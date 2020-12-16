@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CompletableFuture异步任务</title>
+    <url>/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>所谓异步调用其实就是实现一个可无需等待被调用函数的返回值而让操作继续运行的方法。<strong>在 Java 语言中，简单的讲就是另启一个线程来完成调用中的部分计算，使调用继续运行或返回，而不需要等待计算结果。但调用者仍需要取线程的计算结果</strong>。</p>
+<h4 id="Java实现多线程的三种方式"><a href="#Java实现多线程的三种方式" class="headerlink" title="Java实现多线程的三种方式"></a>Java实现多线程的三种方式</h4><ul>
+<li>继承Thread类<br>run() 方法 和 start() 方法：<br>run() 方法：普通的成员方法<br>start() 方法：负责启动一个新的线程，并调用 run() 方法</li>
+</ul>
+<p><strong>因此启动线程，需要使用 start() 方法</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content1.png" class title="content1">   
+
+<ul>
+<li>实现 Runnable 接口</li>
+</ul>
+<p><strong>实际上 Thread 类也是实现了 Runnable 接口：</strong><br>class Thread implements Runnable {<br><strong>启动 Runnable 实例时，需要放在 Thread 中，然后调用 start() 方法</strong>     </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content2.png" class title="content2">  
+
+<ul>
+<li>实现 Callable 接口<br>Java 5 开始提供<br>可以返回结果（通过 Future），也可以抛出异常<br>需要实现的是 call() 方法</li>
+</ul>
+<p><strong>以上两点也是 Callable 接口 与 Runnable 接口的区别</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content3.png" class title="content3">     
+
+<h4 id="Java-FutureTask可异步执行的任务"><a href="#Java-FutureTask可异步执行的任务" class="headerlink" title="Java FutureTask可异步执行的任务"></a>Java FutureTask可异步执行的任务</h4><p>FutureTask 是 Future 接口的一个实现类。<br>使用方式：</p>
+<ul>
+<li>构造一个 Callable 接口的实例</li>
+<li>构造一个 FutureTask 的实例，封装 Callable 接口的实例</li>
+<li>通过线程池 ExecutorService 来运行 FutureTask 的实例</li>
+<li>通过 get() 方法来获得结果</li>
+</ul>
+<p><strong>可以看出，FutureTask 与使用 Callable &amp; Future 的目的差不多，因此 FutureTask 实际不常使用，直接使用 Callable &amp; Future 就可以了</strong>。   </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content4.png" class title="content4">  
+
+<p>JDK5 新增了 Future 接口，用于描述一个异步计算的结果。虽然 Future 以及相关使用方法提供了异步执行任务的能力，但是对于结果的获取却是很不方便，<strong>只能通过阻塞或者轮询的方式得到任务的结果</strong>。 例如：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content5.png" class title="content5">
+
+<p>阻塞的方式显然和我们的异步编程的初衷相违背，轮询的方式又会耗费无谓的 CPU 资源，而且也不能及时地得到计算结果，<strong>为什么不能用观察者设计模式呢？即当计算结果完成及时通知监听者。（例如通过回调的方式）</strong> </p>
+<h3 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a>CompletableFuture</h3><p>Java 8 中, 新增加了一个包含 50 个方法左右的类 CompletableFuture，它提供了非常强大的 Future 的扩展功能，可以帮助我们简化异步编程的复杂性，并且提供了函数式编程的能力，可以通过回调的方式处理计算结果，也提供了转换和组合 CompletableFuture 的方法。</p>
+<p>对于阻塞或者轮询方式，依然可以通过 CompletableFuture 类的 CompletionStage 和 Future 接口方式支持。</p>
+<p>CompletableFuture 类声明了 CompletionStage 接口，CompletionStage 接口实际上提供了同步或异步运行计算的舞台，所以我们可以通过实现多个 CompletionStage 命令，并且将这些命令串联在一起的方式实现多个命令之间的触发。</p>
+<p>我们可以通过 CompletableFuture.supplyAsync(this::sendMsg); 这么一行代码创建一个简单的异步计算。在这行代码中，supplyAsync 支持异步地执行我们指定的方法，这个例子中的异步执行方法是 sendMsg。当然，我们也可以使用 Executor 执行异步程序，默认是 ForkJoinPool.commonPool()。<br>我们也可以在异步计算结束之后指定回调函数，例如 CompletableFuture.supplyAsync(this::sendMsg) .thenAccept(this::notify);<br>这行代码中的 thenAccept 被用于增加回调函数，在我们的示例中 notify 就成了异步计算的消费者，它会处理计算结果。   </p>
+<h3 id="CompletionStage-接口"><a href="#CompletionStage-接口" class="headerlink" title="CompletionStage 接口"></a>CompletionStage<T> 接口</T></h3><p>一个可能执行的异步计算的某个阶段，在另一个CompletionStage完成时执行一个操作或计算一个值。<br>一个阶段完成后，其计算结束。但是，该计算阶段可能会触发下一个计算阶段。<br>最简单的例子<br>CompletableFuture 实际上也实现了 Future 接口： </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content6.png" class title="content6">      
+
+<p>所以我们也可以利用 CompletableFuture 来实现基本的 Future 功能，例如：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content7.png" class title="content7"> 
+
+<p>此时此刻主线程 future.get() 将得到字符串的结果 I have completed，同时完成回调以后将会立即生效。注意 complete() 方法只能调用一次，后续调用将被忽略。<br>注意：get() 方法可能会抛出异常 InterruptedException 和 ExecutionException。<br>如果我们已经知道了异步任务的结果，我们也可以直接创建一个已完成的 future，如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content8.png" class title="content8"> 
+
+<p>如果在异步执行过程中，我们觉得执行会超时或者会出现问题，我们也可以通过 cancle() 方法取消，此时调用 get() 方法时会产生异常 java.util.concurrent.CancellationException，代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content9.png" class title="content9"> 
+
+<h3 id="使用工厂方法创建-CompletableFuture"><a href="#使用工厂方法创建-CompletableFuture" class="headerlink" title="使用工厂方法创建 CompletableFuture"></a>使用工厂方法创建 CompletableFuture</h3><p>在上述的代码中，我们手动地创建 CompletableFuture，并且手动的创建一个线程（或者利用线程池）来启动异步任务，这样似乎有些复杂。</p>
+<p>其实我们可以利用 CompletableFuture 的工厂方法，传入 Supplier 或者 Runnable 的实现类，直接得到一个 CompletableFuture 的实例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static &lt;U&gt; CompletableFuture&lt;U&gt; supplyAsync(Supplier&lt;U&gt; supplier)</span><br><span class="line">public static &lt;U&gt; CompletableFuture&lt;U&gt; supplyAsync(Supplier&lt;U&gt; supplier, Executor executor)</span><br><span class="line">public static CompletableFuture&lt;Void&gt; runAsync(Runnable runnable)</span><br><span class="line">public static CompletableFuture&lt;Void&gt; runAsync(Runnable runnable, Executor executor)</span><br></pre></td></tr></table></figure>
+<p>第一个和第三个方法，没有 Executor 参数，将会使用 ForkJoinPool.commonPool() (全局的，在 JDK8 中介绍的通用池），这适用于 CompletableFuture 类中的大多数的方法。</p>
+<ul>
+<li>Runnable 接口方法 public abstract void run(); 没有返回值</li>
+<li>Supplier 接口方法 T get(); 有返回值。<strong>如果你需要处理异步操作并返回结果，使用前两种 Supplier<U> 方法</U></strong><br>使用 Lambda 表达式来传入 Supplier 或者 Runnable 的实现类。 <img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content10.png" class title="content10">  
+
+</li>
+</ul>
+<h3 id="转换和作用于异步任务的结果-thenApply"><a href="#转换和作用于异步任务的结果-thenApply" class="headerlink" title="转换和作用于异步任务的结果 (thenApply)"></a>转换和作用于异步任务的结果 (thenApply)</h3><p>我们可以叠加功能，把多个 future 组合在一起等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenApply(Function&lt;? super T,? extends U&gt; fn)</span><br></pre></td></tr></table></figure>
+<p>该方法的作用是在该计算阶段正常完成后，将该计算阶段的结果作为参数传递给参数 fn 值的函数Function，并会返回一个新的 CompletionStage</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenApplyAsync(Function&lt;? super T,? extends U&gt; fn)</span><br></pre></td></tr></table></figure>
+<p>该方法和上面的方法 thenApply 功能类似，不同的是对该计算阶段的结果进行计算的函数 fn 的执行时异步的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenApplyAsync(Function&lt;? super T,? extends U&gt; fn, Executor executor)</span><br></pre></td></tr></table></figure>
+<p>该方法和上面的方法 thenApplyAsync 功能类似，不同的是对该计算阶段的结果进行计算的函数 fn 的执行时异步的， 并且是在调用者提供的线程池中执行的。<br>Function 接口方法 R apply(T t); 包含一个参数和一个返回值<br>一个示例代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content11.png" class title="content11"> 
+
+<h3 id="运行完成的异步任务的结果-thenAccept-thenRun"><a href="#运行完成的异步任务的结果-thenAccept-thenRun" class="headerlink" title="运行完成的异步任务的结果 (thenAccept/thenRun)"></a>运行完成的异步任务的结果 (thenAccept/thenRun)</h3><p>在 future 的管道里有两种典型的“最终”阶段方法。他们在你使用 future 的值的时候做好准备，当 thenAccept() 提供最终的值时，thenRun 执行 Runnable。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public CompletableFuture&lt;Void&gt; thenAccept(Consumer&lt;? super T&gt; action)</span><br><span class="line">public CompletableFuture&lt;Void&gt; thenAcceptAsync(Consumer&lt;? super T&gt; action)</span><br><span class="line">public CompletableFuture&lt;Void&gt; thenAcceptAsync(Consumer&lt;? super T&gt; action, Executor executor)</span><br><span class="line">public CompletableFuture&lt;Void&gt; thenRun(Runnable action)</span><br><span class="line">public CompletableFuture&lt;Void&gt; thenRunAsync(Runnable action)</span><br><span class="line">public CompletableFuture&lt;Void&gt; thenRunAsync(Runnable action, Executor executor)</span><br></pre></td></tr></table></figure>
+<p>Consumer 接口方法 void accept(T t); 包含一个参数，但是没有返回值<br>一个示例代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content12.png" class title="content12"> 
+
+<h3 id="结合两个-CompletableFuture"><a href="#结合两个-CompletableFuture" class="headerlink" title="结合两个 CompletableFuture"></a>结合两个 CompletableFuture</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenCompose(Function&lt;? super T, ? extends CompletionStage&lt;U&gt;&gt; fn)</span><br><span class="line">&#x2F;&#x2F;传入前一个 CompletableFuture 的返回值，返回另外一个 CompletableFuture 实例</span><br><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenComposeAsync(Function&lt;? super T, ? extends CompletionStage&lt;U&gt;&gt; fn)</span><br><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; thenComposeAsync(Function&lt;? super T, ? extends CompletionStage&lt;U&gt;&gt; fn, Executor executor)</span><br><span class="line">public &lt;U,V&gt; CompletableFuture&lt;V&gt; thenCombine(CompletionStage&lt;? extends U&gt; other, BiFunction&lt;? super T,? super U,? extends V&gt; fn)</span><br><span class="line">public &lt;U,V&gt; CompletableFuture&lt;V&gt; thenCombineAsync(CompletionStage&lt;? extends U&gt; other, BiFunction&lt;? super T,? super U,? extends V&gt; fn)</span><br><span class="line">public &lt;U,V&gt; CompletableFuture&lt;V&gt; thenCombineAsync(CompletionStage&lt;? extends U&gt; other, BiFunction&lt;? super T,? super U,? extends V&gt; fn, Executor executor)</span><br></pre></td></tr></table></figure>
+<p>一个示例代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content13.png" class title="content13"> 
+
+<p>上述功能也可以通过 thenCombine() 方法实现，传入一个 BiFunction 接口的实例（以 Lambda 形式） 例如： </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content14.png" class title="content14"> 
+
+<h3 id="并行执行多个异步任务"><a href="#并行执行多个异步任务" class="headerlink" title="并行执行多个异步任务"></a>并行执行多个异步任务</h3><p>有时候我们可能需要等待所有的异步任务都执行完毕，然后组合他们的结果。我们可以使用 allOf() 方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static CompletableFuture&lt;Void&gt; allOf(CompletableFuture&lt;?&gt;... cfs)</span><br></pre></td></tr></table></figure>
+<p>一个示例代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content15.png" class title="content15">
+
+<p>有时候我们可能<strong>不需要</strong>等待所有的异步任务都执行完毕，只要任何一个任务完成就返回结果。我们可以使用 anyOf() 方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static CompletableFuture&lt;Object&gt; anyOf(CompletableFuture&lt;?&gt;... cfs)</span><br></pre></td></tr></table></figure>
+<p>一个示例代码如下：</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content16.png" class title="content16">
+
+<h3 id="异常的处理"><a href="#异常的处理" class="headerlink" title="异常的处理"></a>异常的处理</h3><p>我们可以在 handle() 方法里处理异常：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public &lt;U&gt; CompletableFuture&lt;U&gt; handle(BiFunction&lt;? super T, Throwable, ? extends U&gt; fn) </span><br></pre></td></tr></table></figure>
+<p>第一个参数为 CompletableFuture 返回的结果<br>第二个参数为抛出的异常<br>一个示例代码如下：  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/content17.png" class title="content17">                           ]]></content>
+      <categories>
+        <category>Java进阶</category>
+      </categories>
+      <tags>
+        <tag>异步</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gulp压缩和PWA</title>
     <url>/2020/09/08/Gulp%E5%8E%8B%E7%BC%A9%E5%92%8CPWA/</url>
     <content><![CDATA[<h3 id="Gulp压缩"><a href="#Gulp压缩" class="headerlink" title="Gulp压缩"></a>Gulp压缩</h3><p>Gulp是一款自动化构建的工具</p>
