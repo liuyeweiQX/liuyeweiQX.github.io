@@ -8,16 +8,15 @@
 <meta property="og:image" content="http://www.liuyewei.com/images/avatar3.jpeg">
 <meta property="article:author" content="liuyewei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.liuyewei.com/images/avatar3.jpeg"><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://www.liuyewei.com/movies/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="http://www.liuyewei.com/images/avatar3.jpeg"><link rel="shortcut icon" href="/images/logo.png"><link rel="canonical" href="http://www.liuyewei.com/movies/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?1d0ce4111042181ef16f67a3de16d873";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-</script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+</script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
   root: '/',
-  hexoversion: '5.2.0',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
@@ -41,12 +40,18 @@
     month: '个月前'
   },
   copyright: undefined,
-  ClickShowText: undefined,
   lightbox: 'fancybox',
   Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
   },
   isPhotoFigcaption: true,
   islazyload: true,
@@ -79,12 +84,27 @@ var saveToLocal = {
     }
     return item.value
   }
-}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
-  isSidebar: false,
-  postUpdate: '2020-12-17 00:24:16'
+  isToc: false,
+  postUpdate: '2021-01-05 23:48:29'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -97,8 +117,7 @@ var saveToLocal = {
   #post-meta time {
     display: inline !important
   }
-</style></noscript><script>(function () {
-  window.activateDarkMode = function () {
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
     document.documentElement.setAttribute('data-theme', 'dark')
     if (document.querySelector('meta[name="theme-color"]') !== null) {
       document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
@@ -106,11 +125,10 @@ var saveToLocal = {
   }
   window.activateLightMode = function () {
     document.documentElement.setAttribute('data-theme', 'light')
-    if (document.querySelector('meta[name="theme-color"]') !== null) {
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
       document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
     }
   }
-
   const autoChangeMode = 'false'
   const t = saveToLocal.get('theme')
   if (autoChangeMode === '1') {
@@ -118,7 +136,6 @@ var saveToLocal = {
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
     const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
     const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
     if (t === undefined) {
       if (isLightMode) activateLightMode()
       else if (isDarkMode) activateDarkMode()
@@ -145,9 +162,15 @@ var saveToLocal = {
   } else {
     if (t === 'dark') activateDarkMode()
     else if (t === 'light') activateLightMode()
-  }
-})()</script><link rel="stylesheet" href="/css/iconfont.min.css"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="仟寻" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/images/avatar3.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-paw"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-comments"></i><span> 记录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tellme/"><i class="fa-fw fas fa-comment-dots"></i><span> 2020</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div id="web_bg"></div><header class="not-index-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/moviesTop.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">仟寻</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-paw"></i><span> 微语</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-comments"></i><span> 记录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tellme/"><i class="fa-fw fas fa-comment-dots"></i><span> 2020</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="page-site-info"><h1 id="site-title">电影</h1></div></header><main class="layout_page" id="content-inner"><div id="page"><meta name="referrer" content="no-referrer"><div id="article-container"><blockquote>
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="仟寻" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/images/avatar3.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-comments"></i><span> 记录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tellme/"><i class="fa-fw fas fa-comment-dots"></i><span> 2020</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-index-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/moviesTop.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">仟寻</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-comments"></i><span> 记录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tellme/"><i class="fa-fw fas fa-comment-dots"></i><span> 2020</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/message/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">电影</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><blockquote>
     <p>" 我看不见城市的尽头，我需要看见世界尽头。 " ------《海上钢琴师》</p>
 </blockquote>
 
@@ -240,7 +263,7 @@ var saveToLocal = {
     <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;"
        rel="external">
         已看
-        (372)</a>
+        (373)</a>
 </div>
 <div>
     <div id="hexo-douban-item1">
@@ -256,12 +279,12 @@ var saveToLocal = {
     <div id="hexo-douban-item2">
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628425414.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2317441943.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
-            <a target="_blank" href="https://movie.douban.com/subject/34858078/">甜蜜家园 / 스위트홈</a>
+            <a target="_blank" href="https://movie.douban.com/subject/25929151/">遇见你之前 / Me Before You</a>
         </div>
-        <div class="hexo-douban-meta">2020-12-18(韩国) / 宋康 / 李阵郁 / 李是英 / 李到晛 / 朴珪瑛 / 高敏诗 / 高允贞 / 金甲洙 / 金伊敬 / 韩国 / 李应福 / 甜蜜家园 / 剧情 / 惊悚 / 韩语</div>
+        <div class="hexo-douban-meta">2016-06-03(美国) / 艾米莉亚·克拉克 / 山姆·克拉弗林 / 珍妮·麦克蒂尔 / 查尔斯·丹斯 / 布兰登·柯伊尔 / 珍娜·科尔曼 / 马修·刘易斯 / 本·劳埃德-休斯 / 凡妮莎·柯比 / 斯蒂芬·皮科克 / 马修·约翰·摩尔利 / 汉娜·弗林 / 史蒂芬·昶斯 / 卓库·莫度 / 理查德·古尔丁 / 英国 / mebeforeyoumovie.com / 西娅·夏罗克 / 110分钟 / 遇见你之前 / 剧情 / 爱情 / 斯科特·纽斯塔德 Scott Neustadter / 迈克尔·H·韦伯 Michael H. Weber / 乔乔·莫伊斯 Jojo Moyes / 英语</div>
     </div>
 </div>
 
@@ -285,7 +308,7 @@ var saveToLocal = {
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/35051512/">我和我的家乡</a>
         </div>
-        <div class="hexo-douban-meta">2020-10-01(中国大陆) / 葛优 / 黄渤 / 范伟 / 邓超 / 沈腾 / 张占义 / 王宝强 / 徐峥 / 闫妮 / 马丽 / 刘敏涛 / 刘昊然 / 卢靖姗 / 王子文 / 魏翔 / 章宇 / 王砚辉 / 张译 / 王源 / 张一鸣 / 杨新鸣 / 王迅 / 于和伟 / 苗阜 / 辣目洋子 / 张子贤 / 董子健 / 陶虹 / 吴京 / 韩彦博 / 吕行 / 佟丽娅 / 李晨 / 孙俪 / 赵铁人 / 郝云 / 彭昱畅 / 杨紫 / 岳云鹏 / 赵海燕 / 岳小军 / 王俊凯 / 贾玲 / 潘斌龙 / 高睿菲儿 / 陈数 / 代乐乐 / 黄才伦 / 雷佳音 / 梁超 / 孙贵权 / 韩昊霖 / 岳红 / 陶亮 / 李易峰 / 许猛 / 郭帆 / 卫莱 / 栗坤 / 薇娅 / 李佳琦 / 蔡蝶 / 刘炫锐 / 张建亚 / 张芝华 / 孙若淇 / 中国大陆 / 宁浩 / 徐峥 / 陈思诚 / 闫非 / 彭大魔 / 邓超 / 俞白眉 / 153分钟 / 剧情 / 喜剧 / 汉语普通话</div>
+        <div class="hexo-douban-meta">2020-10-01(中国大陆) / 葛优 / 黄渤 / 范伟 / 邓超 / 沈腾 / 张占义 / 王宝强 / 徐峥 / 闫妮 / 马丽 / 刘敏涛 / 刘昊然 / 卢靖姗 / 王子文 / 魏翔 / 章宇 / 王砚辉 / 张译 / 王源 / 张一鸣 / 杨新鸣 / 王迅 / 于和伟 / 苗阜 / 辣目洋子 / 张子贤 / 董子健 / 陶虹 / 吴京 / 韩彦博 / 吕行 / 佟丽娅 / 李晨 / 孙俪 / 赵铁人 / 郝云 / 彭昱畅 / 杨紫 / 岳云鹏 / 赵海燕 / 岳小军 / 王俊凯 / 贾玲 / 潘斌龙 / 高睿菲儿 / 陈数 / 代乐乐 / 黄才伦 / 雷佳音 / 梁超 / 孙贵权 / 韩昊霖 / 岳红 / 陶亮 / 李易峰 / 许猛 / 郭帆 / 卫莱 / 栗坤 / 薇娅 / 李佳琦 / 蔡蝶 / 刘炫锐 / 张建亚 / 张芝华 / 孙若淇 / 王子昭 / 景瓷 / 贝镜水 / 封柏 / 王西 / 吴亚衡 / 唐伯虎 / 张栾 / 陈昊 / 索朗美淇 / 李明轩 / 尚语贤 / 中国大陆 / 宁浩 / 徐峥 / 陈思诚 / 闫非 / 彭大魔 / 邓超 / 俞白眉 / 153分钟 / 剧情 / 喜剧 / 汉语普通话</div>
     </div>
 </div>
 
@@ -297,7 +320,7 @@ var saveToLocal = {
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/10563779/">嫌疑人 / 용의자</a>
         </div>
-        <div class="hexo-douban-meta">2013-12-24(韩国) / 孔侑 / 朴熙顺 / 赵成夏 / 刘多仁 / 金成钧 / 赵在允 / 宋再临 / 金敏载 / 崔钟律 / 李言廷 / 纪柱峰 / 南宝拉 / 徐贤宇 / 韩国 / 元新渊 / 137分钟 / 嫌疑人 / 动作 / 林相润 Lim Sang-Yoon / 韩语</div>
+        <div class="hexo-douban-meta">2013-12-24(韩国) / 孔刘 / 朴熙顺 / 赵成夏 / 刘多仁 / 金成钧 / 赵在允 / 宋再临 / 金敏载 / 崔钟律 / 李言廷 / 纪柱峰 / 南宝拉 / 徐贤宇 / 韩国 / 元新渊 / 137分钟 / 嫌疑人 / 动作 / 林相润 Lim Sang-Yoon / 韩语</div>
     </div>
 </div>
 
@@ -597,7 +620,7 @@ var saveToLocal = {
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/30444960/">信条 / Tenet</a>
         </div>
-        <div class="hexo-douban-meta">2020-08-26(英国) / 2020-09-03(美国) / 2020-09-04(中国大陆) / 约翰·大卫·华盛顿 / 罗伯特·帕丁森 / 伊丽莎白·德比茨基 / 肯尼思·布拉纳 / 亚伦·泰勒-约翰逊 / 迪宝·卡帕蒂娅 / 克蕾曼丝·波西 / 希米什·帕特尔 / 安德鲁·霍华德 / 尤里·科洛科利尼科夫 / 迈克尔·凯恩 / 马丁·唐文 / 卡里娜·韦尔瓦 / 乔纳森·坎普 / 凯蒂·麦克凯布 / 贝恩·科拉科 / 安东尼·莫利纳利 / 特伦特·布克斯顿 / 英格丽·玛格斯 / 瑞奇·切劳洛 / 劳里·谢泼德 / 马克·克雷尼克 / 亚历克斯·威克索 / 丹兹尔·史密斯 / 马塞尔·萨巴特 / 杰里米·西奥伯德 / 菲奥娜·道里夫 / 韦斯·查特姆 / 杰克·卡特莫尔-斯科特 / 杰佛逊·豪尔 / 凯莱布·斯比尔亚兹 / 肖恩·艾弗里 / 吉米·斯达 / 美国 / 英国 / www.tenetfilm.com / 克里斯托弗·诺兰 / 150分钟 / 信条 / 剧情 / 动作 / 科幻 / 克里斯托弗·诺兰 Christopher Nolan / 英语 / 俄语 / 乌克兰语 / 爱沙尼亚语 / 印地语 / 挪威语</div>
+        <div class="hexo-douban-meta">2020-08-26(英国) / 2020-09-03(美国) / 2020-09-04(中国大陆) / 约翰·大卫·华盛顿 / 罗伯特·帕丁森 / 伊丽莎白·德比茨基 / 肯尼思·布拉纳 / 亚伦·泰勒-约翰逊 / 迪宝·卡帕蒂娅 / 克蕾曼丝·波西 / 希米什·帕特尔 / 安德鲁·霍华德 / 尤里·科洛科利尼科夫 / 迈克尔·凯恩 / 马丁·唐文 / 卡里娜·韦尔瓦 / 乔纳森·坎普 / 凯蒂·麦克凯布 / 贝恩·科拉科 / 安东尼·莫利纳利 / 特伦特·布克斯顿 / 英格丽·玛格斯 / 瑞奇·切劳洛 / 劳里·谢泼德 / 马克·克雷尼克 / 亚历克斯·威克索 / 丹兹尔·史密斯 / 马塞尔·萨巴特 / 杰里米·西奥伯德 / 菲奥娜·道里夫 / 韦斯·查特姆 / 杰克·卡特莫尔-斯科特 / 杰佛逊·豪尔 / 凯莱布·斯比尔亚兹 / 肖恩·艾弗里 / 吉米·斯达 / 美国 / 英国 / www.tenetfilm.com / 克里斯托弗·诺兰 / 150分钟 / 144分钟(中国大陆) / 信条 / 剧情 / 动作 / 科幻 / 克里斯托弗·诺兰 Christopher Nolan / 英语 / 俄语 / 乌克兰语 / 爱沙尼亚语 / 印地语 / 挪威语</div>
     </div>
 </div>
 
@@ -693,7 +716,7 @@ var saveToLocal = {
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/30210691/">极限逃生 / 엑시트</a>
         </div>
-        <div class="hexo-douban-meta">2019-07-31(韩国) / 曹政奭 / 林允儿 / 高斗心 / 朴仁焕 / 金智英 / 裴侑蓝 / 姜其永 / 李东辉 / 金钟求 / 金姜贤 / 吴熙俊 / 黄孝恩 / 金嫝勋 / 金景龙 / 裴海善 / 金泰律 / 韩国 / 李相槿 / 103分钟 / 极限逃生 / 喜剧 / 动作 / 灾难 / 李尚根 Sang-geun Lee / 韩语</div>
+        <div class="hexo-douban-meta">2019-07-31(韩国) / 曹政奭 / 林允儿 / 高斗心 / 朴仁焕 / 金智英 / 裴侑蓝 / 姜其永 / 李东辉 / 金钟求 / 金姜贤 / 吴熙俊 / 黄孝恩 / 金嫝勋 / 金景龙 / 裴海善 / 金泰律 / 吴侑珍 / 韩国 / 李相槿 / 103分钟 / 极限逃生 / 喜剧 / 动作 / 灾难 / 李尚根 Sang-geun Lee / 韩语</div>
     </div>
 </div>
 
@@ -849,7 +872,7 @@ var saveToLocal = {
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/1309021/">康斯坦丁 / Constantine</a>
         </div>
-        <div class="hexo-douban-meta">2005-02-18(美国) / 基努·里维斯 / 蕾切尔·薇兹 / 希亚·拉博夫 / 杰曼·翰苏 / 蒂尔达·斯文顿 / 艾普尔·格雷斯 / 何塞·祖尼加 / 迈克尔·凯斯 / 弗朗西斯·奎南 / 马克·贝克 / 米歇尔·莫纳汉 / 盖文·罗斯戴尔 / 普路特·泰勒·文斯 / 彼得·斯特曼 / 拉兹·阿隆索 / R.A. 郎德尔 / 安德烈斯·朗多罗 / 美国 / 德国 / 弗朗西斯·劳伦斯 / 121 分钟 / 康斯坦丁 / 动作 / 奇幻 / 惊悚 / 凯文·布劳得宾 Kevin Brodbin / Frank A. Cappello / Jamie Delano / Garth Ennis / 英语 / 菲律宾语 / 塔加路族语</div>
+        <div class="hexo-douban-meta">2005-02-18(美国) / 基努·里维斯 / 蕾切尔·薇兹 / 希亚·拉博夫 / 杰曼·翰苏 / 蒂尔达·斯文顿 / 艾普尔·格雷斯 / 何塞·祖尼加 / 迈克尔·凯斯 / 弗朗西斯·奎南 / 马克·贝克 / 米歇尔·莫纳汉 / 盖文·罗斯戴尔 / 普路特·泰勒·文斯 / 彼得·斯特曼 / 拉兹·阿隆索 / R.A. 郎德尔 / 安德烈斯·朗多罗 / 美国 / 德国 / 弗朗西斯·劳伦斯 / 121 分钟 / 康斯坦丁 / 动作 / 奇幻 / 惊悚 / 凯文·布劳得宾 Kevin Brodbin / Frank A. Cappello / Jamie Delano / Garth Ennis / 英语 / 菲律宾语 / 汉语普通话</div>
     </div>
 </div>
 
@@ -936,6 +959,19 @@ var saveToLocal = {
 </div>
     </div>
     <div id="hexo-douban-item3">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628425414.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title">
+            <a target="_blank" href="https://movie.douban.com/subject/34858078/">甜蜜家园 / 스위트홈</a>
+        </div>
+        <div class="hexo-douban-meta">2020-12-26 /  / ★★★★★ 力荐 </div>
+        <div class="hexo-douban-comments"> 刺激</div>
+    </div>
+</div>
+
+
         
         <div class="hexo-douban-item">
     <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2623301908.jpg" referrerPolicy="no-referrer" /></div>
@@ -1172,7 +1208,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2588307420.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2610358497.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/30299515/">釜山行2：半岛 / 부산행2-반도</a>
@@ -1978,7 +2014,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2501769525.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2497075814.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/22266012/">全球风暴 / Geostorm</a>
@@ -3655,7 +3691,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1959232369.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1800813767.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/6307447/">被解救的姜戈 / Django Unchained</a>
@@ -4045,7 +4081,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2457983084.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2401676338.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/26387939/">摔跤吧！爸爸 / Dangal</a>
@@ -4786,7 +4822,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2184739474.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1188042816.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/1794171/">变形金刚 / Transformers</a>
@@ -5488,7 +5524,7 @@ var saveToLocal = {
 
         
         <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1075448129.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1182659238.jpg" referrerPolicy="no-referrer" /></div>
     <div class="hexo-douban-info">
         <div class="hexo-douban-title">
             <a target="_blank" href="https://movie.douban.com/subject/2138838/">美国队长 / Captain America: The First Avenger</a>
@@ -5897,16 +5933,16 @@ for (var i = 0; i < firstpages.length; i++) {
 
 </script>
 
-</div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/images/avatar3.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">liuyewei</div><div class="author-info__description">却又突然听到你的消息</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">15</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/liuyeweiQX"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="tencent://message/?uin=769489912&amp;Site=fdfdf&amp;Menu=yes" target="_blank" title="Qq"><i class="iconfont icon-qq1 card_icon"></i></a><a class="social-icon" href="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/weChat.jpeg" target="_blank" title="weChat"><i class="iconfont icon-weixin1"></i></a><a class="social-icon" href="mailto:769489912@qq.com" target="_blank" title="Email"><i class="iconfont icon-youxiang"></i></a><a class="social-icon" href="https://www.weibo.com/DecemberZzZ" target="_blank" title="Weibo"><i class="fab fa-weibo weiboColor"></i></a><a class="social-icon" href="https://blog.csdn.net/IamFiora" target="_blank" title="csdn"><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://space.bilibili.com/7752686/" target="_blank" title="bilibili"><i class="iconfont icon-bilibili1 card_icon"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"><center>如果你不出去走走，<br>你就会以为这就是全世界。</center></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/" title="CompletableFuture异步任务"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img15.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CompletableFuture异步任务"/></a><div class="content"><a class="title" href="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/" title="CompletableFuture异步任务">CompletableFuture异步任务</a><time datetime="2020-12-16T15:32:30.000Z" title="发表于 2020-12-16 23:32:30">2020-12-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/30/SpringMVC/" title="SpringMVC"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img14.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC"/></a><div class="content"><a class="title" href="/2020/11/30/SpringMVC/" title="SpringMVC">SpringMVC</a><time datetime="2020-11-30T15:55:30.000Z" title="发表于 2020-11-30 23:55:30">2020-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--3.%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/" title="深入理解JVM--3.垃圾收集与内存分配"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img13.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--3.垃圾收集与内存分配"/></a><div class="content"><a class="title" href="/2020/10/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--3.%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/" title="深入理解JVM--3.垃圾收集与内存分配">深入理解JVM--3.垃圾收集与内存分配</a><time datetime="2020-10-08T17:04:30.000Z" title="发表于 2020-10-09 01:04:30">2020-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--2.%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" title="深入理解JVM--2.内存区域与内存溢出"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img12.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--2.内存区域与内存溢出"/></a><div class="content"><a class="title" href="/2020/09/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--2.%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" title="深入理解JVM--2.内存区域与内存溢出">深入理解JVM--2.内存区域与内存溢出</a><time datetime="2020-09-27T16:50:30.000Z" title="发表于 2020-09-28 00:50:30">2020-09-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/" title="深入理解JVM--1.走近Java"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--1.走近Java"/></a><div class="content"><a class="title" href="/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/" title="深入理解JVM--1.走近Java">深入理解JVM--1.走近Java</a><time datetime="2020-09-27T15:36:44.000Z" title="发表于 2020-09-27 23:36:44">2020-09-27</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+</div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/images/avatar3.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">liuyewei</div><div class="author-info__description">却又突然听到你的消息</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/liuyeweiQX"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="tencent://message/?uin=769489912&amp;Site=fdfdf&amp;Menu=yes" target="_blank" title="Qq"><i class="iconfont icon-qq1 card_icon"></i></a><a class="social-icon" href="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/weChat.jpeg" target="_blank" title="weChat"><i class="iconfont icon-weixin1"></i></a><a class="social-icon" href="mailto:769489912@qq.com" target="_blank" title="Email"><i class="iconfont icon-youxiang"></i></a><a class="social-icon" href="https://www.weibo.com/DecemberZzZ" target="_blank" title="Weibo"><i class="fab fa-weibo weiboColor"></i></a><a class="social-icon" href="https://blog.csdn.net/IamFiora" target="_blank" title="csdn"><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://space.bilibili.com/7752686/" target="_blank" title="bilibili"><i class="iconfont icon-bilibili1 card_icon"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"><center>如果你不出去走走，<br>你就会以为这就是全世界。</center></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/" title="CompletableFuture异步任务"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img15.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CompletableFuture异步任务"/></a><div class="content"><a class="title" href="/2020/12/16/CompletableFuture%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/" title="CompletableFuture异步任务">CompletableFuture异步任务</a><time datetime="2020-12-16T15:32:30.000Z" title="发表于 2020-12-16 23:32:30">2020-12-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/30/SpringMVC/" title="SpringMVC"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img14.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC"/></a><div class="content"><a class="title" href="/2020/11/30/SpringMVC/" title="SpringMVC">SpringMVC</a><time datetime="2020-11-30T15:55:30.000Z" title="发表于 2020-11-30 23:55:30">2020-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--3.%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/" title="深入理解JVM--3.垃圾收集与内存分配"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img13.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--3.垃圾收集与内存分配"/></a><div class="content"><a class="title" href="/2020/10/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--3.%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/" title="深入理解JVM--3.垃圾收集与内存分配">深入理解JVM--3.垃圾收集与内存分配</a><time datetime="2020-10-08T17:04:30.000Z" title="发表于 2020-10-09 01:04:30">2020-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--2.%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" title="深入理解JVM--2.内存区域与内存溢出"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img12.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--2.内存区域与内存溢出"/></a><div class="content"><a class="title" href="/2020/09/28/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--2.%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" title="深入理解JVM--2.内存区域与内存溢出">深入理解JVM--2.内存区域与内存溢出</a><time datetime="2020-09-27T16:50:30.000Z" title="发表于 2020-09-28 00:50:30">2020-09-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/" title="深入理解JVM--1.走近Java"><img data-lazy-src="https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/post/img11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解JVM--1.走近Java"/></a><div class="content"><a class="title" href="/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/" title="深入理解JVM--1.走近Java">深入理解JVM--1.走近Java</a><time datetime="2020-09-27T15:36:44.000Z" title="发表于 2020-09-27 23:36:44">2020-09-27</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/"><span class="card-category-list-name">Java进阶</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SpringMVC/"><span class="card-category-list-name">SpringMVC</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/"><span class="card-category-list-name">框架</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM/"><span class="card-category-list-name">深入理解JVM</span><span class="card-category-list-count">3</span></a></li>
             
-            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%BC%82%E6%AD%A5/" style="font-size: 1.1em; color: rgb(125, 185, 169)">异步</a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 1.1em; color: rgb(79, 158, 65)">优化</a><a href="/tags/JPA/" style="font-size: 1.1em; color: rgb(170, 45, 117)">JPA</a><a href="/tags/Markdown/" style="font-size: 1.1em; color: rgb(36, 13, 83)">Markdown</a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.1em; color: rgb(76, 121, 113)">面试</a><a href="/tags/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB/" style="font-size: 1.1em; color: rgb(55, 189, 29)">内外部类</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: rgb(82, 158, 76)">数据库</a><a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 1.1em; color: rgb(62, 63, 108)">消息队列</a><a href="/tags/JVM/" style="font-size: 1.5em; color: rgb(119, 193, 170)">JVM</a><a href="/tags/%E7%B1%BB/" style="font-size: 1.3em; color: rgb(104, 171, 98)">类</a><a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: rgb(19, 23, 198)">Java基础</a><a href="/tags/Spring/" style="font-size: 1.1em; color: rgb(81, 163, 63)">Spring</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">2</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">15</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-06-05T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">30.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-12-16T16:24:16.579Z"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/moviesTop.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 By liuyewei</div><div class="footer_custom_text">无所谓失去，只是经过而已...<br><a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">本站由&nbsp<img style="position:relative;bottom:-6px; " src="/images/ypyLogo.png" width="60px" height="30px">&nbsp提供CDN加速</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png"/><span>皖ICP备20006248号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%BC%82%E6%AD%A5/" style="font-size: 1.1em; color: rgb(197, 153, 155)">异步</a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 1.1em; color: rgb(137, 191, 188)">优化</a><a href="/tags/JPA/" style="font-size: 1.1em; color: rgb(5, 59, 138)">JPA</a><a href="/tags/Markdown/" style="font-size: 1.1em; color: rgb(151, 44, 117)">Markdown</a><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.1em; color: rgb(7, 42, 183)">面试</a><a href="/tags/%E5%86%85%E5%A4%96%E9%83%A8%E7%B1%BB/" style="font-size: 1.1em; color: rgb(54, 82, 168)">内外部类</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: rgb(71, 146, 173)">数据库</a><a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 1.1em; color: rgb(142, 104, 10)">消息队列</a><a href="/tags/JVM/" style="font-size: 1.5em; color: rgb(20, 18, 28)">JVM</a><a href="/tags/%E7%B1%BB/" style="font-size: 1.3em; color: rgb(42, 147, 152)">类</a><a href="/tags/Java%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: rgb(172, 141, 91)">Java基础</a><a href="/tags/Spring/" style="font-size: 1.1em; color: rgb(187, 58, 173)">Spring</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">15</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-06-05T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">30.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-05T15:48:29.799Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/liuyeweiQX/picBed/img/moviesTop.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By liuyewei</div><div class="footer_custom_text">无所谓失去，只是经过而已...<br><a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">本站由&nbsp<img style="position:relative;bottom:-6px; " src="/images/ypyLogo.png" width="60px" height="30px">&nbsp提供CDN加速</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
   else {
-    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
-      pangu.spacingElementById('content-inner')
-    })
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.spacingElementById('content-inner')
+      })
   }
 }
 
@@ -5918,7 +5954,7 @@ function panguInit () {
   }
 }
 
-document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
@@ -5931,7 +5967,7 @@ document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/
 }
 window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>function loadValine () {
   function initValine () {
-    const initData = {
+    let initData = {
       el: '#vcomment',
       master: '2f40a7c42c405207c58b2f1aad190f39',
       friends: '',
@@ -5953,17 +5989,22 @@ window.addEventListener('load',()=> {preloader.endLoading()})</script><div class
     if (true) { 
       initData.requiredFields= ('nick,mail'.split(','))
     }
-
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
     const valine = new Valine(initData)
   }
 
   if (typeof Valine === 'function') initValine() 
-  else $.getScript('https://cdn.jsdelivr.net/gh/lete114/CDN2/js/Valine-Lete3.2.js', initValine)
+  else getScript('https://cdn.jsdelivr.net/gh/lete114/CDN2/js/Valine-Lete3.2.js').then(initValine)
 }
 
 if ('Valine' === 'Valine' || !false) {
-  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
-  else setTimeout(() => loadValine(), 0)
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
 } else {
   function loadOtherComment () {
     loadValine()
@@ -5972,7 +6013,7 @@ if ('Valine' === 'Valine' || !false) {
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
   'title',
   '#config_change',
   '#body-wrap',
@@ -5996,8 +6037,12 @@ var pjax = new Pjax({
 document.addEventListener('pjax:complete', function () {
   window.refreshFn()
 
-  $('script[data-pjax]').each(function () {
-    $(this).parent().append($(this).remove())
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
   })
 
   GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
@@ -6036,9 +6081,8 @@ document.addEventListener('pjax:send', function () {
 
   typeof typed === 'object' && typed.destroy()
 
-  $(window).off('scroll')
-
   //reset readmode
-  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
 
 })</script></div></body></html>
