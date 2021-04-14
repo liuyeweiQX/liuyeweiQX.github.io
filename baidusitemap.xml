@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.liuyewei.com/2021/04/14/Git%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2021-04-14</lastmod>
+  </url>
+  <url>
+    <loc>http://www.liuyewei.com/2021/04/15/xss%20&%20sql%E6%BC%8F%E6%B4%9E%E8%A7%A3%E5%86%B3/</loc>
+    <lastmod>2021-04-14</lastmod>
+  </url>
+  <url>
     <loc>http://www.liuyewei.com/2021/02/06/%E5%88%9D%E8%AF%86Activiti%E5%B7%A5%E4%BD%9C%E6%B5%81/</loc>
     <lastmod>2021-02-06</lastmod>
   </url>
