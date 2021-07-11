@@ -141,7 +141,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd：改变目录</span><br><span class="line">cd .. ：回退到上一个目录，直接cd进入默认目录</span><br><span class="line">pwd：显示当前所在的目录路径</span><br><span class="line">ls(ll)：都是列出当前目录中的所有文件，只不过ll列出的内容更为详细</span><br><span class="line">touch：新建一个文件 如touch index.js 就会在当前目录下新建一个index.js文件</span><br><span class="line">rm：删除一个文件，rm index.js 就会把index.js文件删除</span><br><span class="line">mkdir：新建一个文件夹</span><br><span class="line">rm -r：删除一个文件夹，rm -r src删除src文件夹</span><br><span class="line">mv：移动文件，mv index.html src 将index.html文件移动到src目录下</span><br><span class="line">reset：重新初始化终端&#x2F;清屏</span><br><span class="line">clear：清屏</span><br><span class="line">history：查看命令历史</span><br><span class="line">help：帮助</span><br><span class="line">exit：退出</span><br><span class="line">#表示注释</span><br></pre></td></tr></table></figure>
 <p>查看配置：git config -l<br>查看全局配置：git config –global –list（这个事先必须自己先配置好）</p>
 <img src= "/img/loading.gif" data-lazy-src="/2021/04/14/Git%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/content4.png" class title="content4">
-<p>git config –global user.name “liuyeweiQX” #名称<br>git config –global user.email <a href="mailto:&#55;&#x36;&#57;&#x34;&#x39;&#x39;&#49;&#x32;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#55;&#x36;&#57;&#x34;&#x39;&#x39;&#49;&#x32;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a> #邮箱</p>
+<p>git config –global user.name “liuyeweiQX” #名称<br>git config –global user.email <a href="mailto:&#55;&#54;&#x39;&#52;&#57;&#x39;&#49;&#50;&#x40;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">&#55;&#54;&#x39;&#52;&#57;&#x39;&#49;&#50;&#x40;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;</a> #邮箱</p>
 <h3 id="Git基本理论"><a href="#Git基本理论" class="headerlink" title="Git基本理论"></a>Git基本理论</h3><p>Git本地有三个工作区域：工作目录（Working Directory）、暂存区（Stage/Index）、资源库（Repository或Git Directory）。如果在加上远程的git仓库（Remote Directory）就可以分为四个工作区域。文件在这四个区域之间的转换关系如下：</p>
 <img src= "/img/loading.gif" data-lazy-src="/2021/04/14/Git%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/content5.png" class title="content5">
 
@@ -545,40 +545,6 @@
       </tags>
   </entry>
   <entry>
-    <title>深入理解JVM--1.走近Java</title>
-    <url>/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/</url>
-    <content><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java不仅仅是一门编程语言，它还是一个由一系列计算机软件和规范组成的技术体系，这个技术体系提供了完整的用于软件开发和跨平台部署的支持环境，并广泛应用于嵌入式系统、移动终端、企业服务器、大型机等多种场合。<br>Java优势：</p>
-<ul>
-<li>结构严谨、面向对象</li>
-<li>摆脱硬件平台的束缚，实现“一次编写、到处运行“</li>
-<li>提供相对安全的内存管理和访问机制，避免绝大部分内存泄漏和指针越界问题</li>
-<li>实现了热点代码检测和运行时编译及优化，使得Java应用能随着运行时间的增长而获得更高的性能</li>
-<li>有一套完善的应用程序接口，还有无数来自商业机构和开源社区的第三方类库来帮助用户实现各种各样的功能</li>
-</ul>
-<h3 id="Java技术体系"><a href="#Java技术体系" class="headerlink" title="Java技术体系"></a>Java技术体系</h3><p>组成部分：</p>
-<ol>
-<li>Java程序设计语言</li>
-<li>各种硬件平台上的Java虚拟机实现</li>
-<li>Class文件格式</li>
-<li>Java类库API</li>
-<li>来自商业机构和开源社区的第三方Java类库<br>Java程序设计语言、Java虚拟机、Java类库这三部分统称为<strong>JDK（Java Development Kit），JDK是用于支持Java程序开发的最小环境</strong>。<br>Java类库API中的Java SE API子集和Java虚拟机这两部分统称为<strong>JRE（Java Runtime Environment），JRE是支持Java程序运行的标准环境</strong>。</li>
-</ol>
-<p>产品线：</p>
-<ol>
-<li>Java Card：支持Java小程序（Applets）运行在小内存设备（如智能卡）上的平台。</li>
-<li>Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台。JDK 6以前被称为J2ME。备注：智能手机上Java开发的Android应用不属于Java ME。</li>
-<li>Java SE(Standard Edition)：支持面向桌面级应用（如Windows下的应用程序）的Java平台。JDK 6以前被称为J2SE。</li>
-<li>Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、MIS、CRM应用）的Java平台。JDK 6以前被称为J2EE，在JDK 10以后被Oracle放弃，捐献给Eclipse基金会管理，此后被称为Jakarta EE。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>深入理解JVM</category>
-      </categories>
-      <tags>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>消息队列</title>
     <url>/2020/08/04/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h3 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h3><p>可以把消息队列比作是一个存放消息的容器。消息队列是分布式系统中重要的组件，使用消息队列主要是为了通过异步处理提高系统性能和削峰、降低系统耦合性。目前使用较多的消息队列有ActiveMQ，RabbitMQ，Kafka，RocketMQ。</p>
@@ -646,6 +612,40 @@
       </categories>
       <tags>
         <tag>消息队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入理解JVM--1.走近Java</title>
+    <url>/2020/09/27/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM--1.%E8%B5%B0%E8%BF%91Java/</url>
+    <content><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java不仅仅是一门编程语言，它还是一个由一系列计算机软件和规范组成的技术体系，这个技术体系提供了完整的用于软件开发和跨平台部署的支持环境，并广泛应用于嵌入式系统、移动终端、企业服务器、大型机等多种场合。<br>Java优势：</p>
+<ul>
+<li>结构严谨、面向对象</li>
+<li>摆脱硬件平台的束缚，实现“一次编写、到处运行“</li>
+<li>提供相对安全的内存管理和访问机制，避免绝大部分内存泄漏和指针越界问题</li>
+<li>实现了热点代码检测和运行时编译及优化，使得Java应用能随着运行时间的增长而获得更高的性能</li>
+<li>有一套完善的应用程序接口，还有无数来自商业机构和开源社区的第三方类库来帮助用户实现各种各样的功能</li>
+</ul>
+<h3 id="Java技术体系"><a href="#Java技术体系" class="headerlink" title="Java技术体系"></a>Java技术体系</h3><p>组成部分：</p>
+<ol>
+<li>Java程序设计语言</li>
+<li>各种硬件平台上的Java虚拟机实现</li>
+<li>Class文件格式</li>
+<li>Java类库API</li>
+<li>来自商业机构和开源社区的第三方Java类库<br>Java程序设计语言、Java虚拟机、Java类库这三部分统称为<strong>JDK（Java Development Kit），JDK是用于支持Java程序开发的最小环境</strong>。<br>Java类库API中的Java SE API子集和Java虚拟机这两部分统称为<strong>JRE（Java Runtime Environment），JRE是支持Java程序运行的标准环境</strong>。</li>
+</ol>
+<p>产品线：</p>
+<ol>
+<li>Java Card：支持Java小程序（Applets）运行在小内存设备（如智能卡）上的平台。</li>
+<li>Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台。JDK 6以前被称为J2ME。备注：智能手机上Java开发的Android应用不属于Java ME。</li>
+<li>Java SE(Standard Edition)：支持面向桌面级应用（如Windows下的应用程序）的Java平台。JDK 6以前被称为J2SE。</li>
+<li>Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、MIS、CRM应用）的Java平台。JDK 6以前被称为J2EE，在JDK 10以后被Oracle放弃，捐献给Eclipse基金会管理，此后被称为Jakarta EE。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>深入理解JVM</category>
+      </categories>
+      <tags>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -757,6 +757,36 @@
       </tags>
   </entry>
   <entry>
+    <title>类的加载方式</title>
+    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
+<li>隐式加载：new</li>
+<li>显式加载：ClassLoader.loadClass和Class.forName</li>
+</ol>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
+<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
+
+<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
+<p><strong>Class.forName:</strong></p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
+<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
+<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
+<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>类的加载过程</title>
     <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="Java-类加载机制"><a href="#Java-类加载机制" class="headerlink" title="Java 类加载机制"></a>Java 类加载机制</h3><p>类从被加载到JVM中开始，到卸载为止，整个生命周期包括：<strong>加载、验证、准备、解析、初始化、使用和卸载七个阶段</strong>。<br>其中类加载过程包括加载、验证、准备、解析和初始化五个阶段。</p>
@@ -839,36 +869,6 @@
       </categories>
       <tags>
         <tag>Java基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类的加载方式</title>
-    <url>/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><ol>
-<li>隐式加载：new</li>
-<li>显式加载：ClassLoader.loadClass和Class.forName</li>
-</ol>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>方式1：<br>new通过关键字 然后通过不同的构造器直接创建实例。如：new String() ，new String(“test”)</p>
-<p>方式2：<br>需要加载.class文件获取Class对象，通过Class对象，获取构造器，然后调用newInstance方法创建对象实例。</p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content1.png" class title="content1">
-
-<h3 id="ClassLoader-loadClass和Class-forName的区别"><a href="#ClassLoader-loadClass和Class-forName的区别" class="headerlink" title="ClassLoader.loadClass和Class.forName的区别"></a>ClassLoader.loadClass和Class.forName的区别</h3><p>Class的装载包括3个步骤：加载（loading），连接（link），初始化（initialize）<br>参考：类的加载过程文档</p>
-<p><strong>Class.forName:</strong></p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content2.png" class title="content2">
-<p>forName0第二个参数initialize初始化 这里参数是true说明是初始化过的，因此，静态代码块和静态变量是会被执行和初始化的<br><strong>ClassLoader.loadClass:</strong>  </p>
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content3.png" class title="content3">
-<p>第二参数resolve，注释中说明这个参数代表是否链接（类加载过程中的链接过程）ClassLoader.loadClass在加载类的过程中只走了第一步</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content4.png" class title="content4">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content5.png" class title="content5">
-<img src= "/img/loading.gif" data-lazy-src="/2020/08/20/%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/content6.png" class title="content6">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Class.forName得到的class是已经初始化<br>ClassLoader.loadeClass得到的class是还没有链接的</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>类</tag>
       </tags>
   </entry>
   <entry>
